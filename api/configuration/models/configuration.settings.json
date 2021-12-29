@@ -1,0 +1,75 @@
+{
+  "kind": "collectionType",
+  "collectionName": "configurations",
+  "info": {
+    "name": "configuration"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "label": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "value": {
+      "type": "string"
+    },
+    "sort": {
+      "type": "integer"
+    },
+    "module": {
+      "type": "enumeration",
+      "enum": [
+        "Doctors",
+        "Email",
+        "General",
+        "Laboratories",
+        "Payments",
+        "Statistics",
+        "SMS",
+        "Social_Media",
+        "User"
+      ]
+    },
+    "help": {
+      "type": "string",
+      "required": true
+    },
+    "input_type": {
+      "type": "enumeration",
+      "enum": [
+        "checkbox",
+        "File",
+        "Number",
+        "Radio",
+        "Select",
+        "Text",
+        "Textarea"
+      ]
+    },
+    "selection_value": {
+      "type": "text",
+      "required": true
+    },
+    "required_field": {
+      "type": "enumeration",
+      "enum": [
+        "YES",
+        "NO"
+      ]
+    },
+    "status": {
+      "type": "enumeration",
+      "enum": [
+        "ACTIVE",
+        "INACTIVE"
+      ]
+    }
+  }
+}

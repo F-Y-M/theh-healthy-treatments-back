@@ -1,0 +1,25 @@
+{
+  "kind": "collectionType",
+  "collectionName": "availability_hours",
+  "info": {
+    "name": "availability_hour",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "users_id": {
+      "via": "availability_hours_id",
+      "plugin": "users-permissions",
+      "model": "user"
+    },
+    "availability_hours": {
+      "type": "json",
+      "required": true
+    }
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "kind": "collectionType",
+  "collectionName": "payments",
+  "info": {
+    "name": "payment",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "Cash",
+        "Doctor_Office",
+        "Payu"
+      ]
+    },
+    "value": {
+      "type": "decimal"
+    },
+    "ip": {
+      "type": "integer",
+      "required": true
+    },
+    "medical_appointment_id": {
+      "via": "payment_id",
+      "model": "medical-appointment"
+    },
+    "status": {
+      "type": "enumeration",
+      "enum": [
+        "Slope",
+        "Payment"
+      ]
+    }
+  }
+}

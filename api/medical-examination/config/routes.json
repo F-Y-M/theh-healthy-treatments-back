@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/medical-examinations",
+      "handler": "medical-examination.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/medical-examinations/count",
+      "handler": "medical-examination.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/medical-examinations/:id",
+      "handler": "medical-examination.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/medical-examinations",
+      "handler": "medical-examination.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/medical-examinations/:id",
+      "handler": "medical-examination.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/medical-examinations/:id",
+      "handler": "medical-examination.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

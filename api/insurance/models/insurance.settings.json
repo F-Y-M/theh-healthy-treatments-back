@@ -1,0 +1,36 @@
+{
+  "kind": "collectionType",
+  "collectionName": "insurances",
+  "info": {
+    "name": "insurance",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": false
+    },
+    "status": {
+      "type": "enumeration",
+      "enum": [
+        "ACTIVE",
+        "INACTIVE"
+      ]
+    },
+    "users_ids": {
+      "via": "insurance_id",
+      "plugin": "users-permissions",
+      "collection": "user"
+    },
+    "insurance_has_users_id": {
+      "via": "insurance_id",
+      "collection": "insurance-has-users"
+    }
+  }
+}

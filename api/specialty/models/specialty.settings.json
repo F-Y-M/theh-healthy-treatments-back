@@ -1,0 +1,34 @@
+{
+  "kind": "collectionType",
+  "collectionName": "specialties",
+  "info": {
+    "name": "specialty",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "specialty": {
+      "type": "string",
+      "required": false
+    },
+    "img": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images"
+      ],
+      "plugin": "upload",
+      "required": false,
+      "pluginOptions": {}
+    },
+    "specialties_has_users_id": {
+      "via": "specialty_id",
+      "collection": "specialties-has-user"
+    }
+  }
+}

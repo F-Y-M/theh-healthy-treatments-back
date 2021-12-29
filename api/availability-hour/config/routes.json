@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/availability-hours",
+      "handler": "availability-hour.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/availability-hours/count",
+      "handler": "availability-hour.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/availability-hours/:id",
+      "handler": "availability-hour.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/availability-hours",
+      "handler": "availability-hour.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/availability-hours/:id",
+      "handler": "availability-hour.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/availability-hours/:id",
+      "handler": "availability-hour.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

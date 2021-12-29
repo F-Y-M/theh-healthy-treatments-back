@@ -1,0 +1,71 @@
+{
+  "kind": "collectionType",
+  "collectionName": "medical_records",
+  "info": {
+    "name": "medical_record"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "current_illness_patient": {
+      "type": "string",
+      "required": true
+    },
+    "history_of_current_illness_patient": {
+      "type": "string",
+      "required": true
+    },
+    "personal_history_patient": {
+      "type": "string",
+      "required": true
+    },
+    "additional_comments_patient": {
+      "type": "string",
+      "required": true
+    },
+    "current_illness": {
+      "type": "text",
+      "required": true
+    },
+    "systems_review": {
+      "type": "text",
+      "required": true
+    },
+    "background": {
+      "type": "text",
+      "required": true
+    },
+    "physical_exam": {
+      "type": "text",
+      "required": true
+    },
+    "evaluation": {
+      "type": "text",
+      "required": true
+    },
+    "diagnosis": {
+      "type": "text",
+      "required": true
+    },
+    "treatment_plan": {
+      "type": "text",
+      "required": true
+    },
+    "analysis": {
+      "type": "text",
+      "required": true
+    },
+    "recommendations": {
+      "type": "text",
+      "required": true
+    },
+    "pdf": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

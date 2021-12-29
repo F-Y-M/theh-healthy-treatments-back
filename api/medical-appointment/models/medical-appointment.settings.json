@@ -1,0 +1,70 @@
+{
+  "kind": "collectionType",
+  "collectionName": "medical_appointments",
+  "info": {
+    "name": "medical_appointment",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "date": {
+      "type": "datetime",
+      "required": false
+    },
+    "current_appointment_time": {
+      "type": "datetime",
+      "required": false
+    },
+    "status": {
+      "type": "enumeration",
+      "enum": [
+        "Slope",
+        "Confirmed",
+        "In_progress",
+        "Finished",
+        "Not_attended_by_the_patient",
+        "Not_attended_by_the_doctor",
+        "Not_attended_by_the_laboratory"
+      ],
+      "default": "Slope"
+    },
+    "medical_examination_id": {
+      "via": "medical_appointments_id",
+      "model": "medical-examination"
+    },
+    "medical_record_id": {
+      "model": "medical-record"
+    },
+    "payment_id": {
+      "via": "medical_appointment_id",
+      "model": "payment"
+    },
+    "patient_id": {
+      "via": "medical_appointments_id",
+      "plugin": "users-permissions",
+      "model": "user"
+    },
+    "professional_id": {
+      "via": "medical_appointments_professional_id",
+      "plugin": "users-permissions",
+      "model": "user"
+    },
+    "reason_for_consultation": {
+      "type": "string"
+    },
+    "code": {
+      "type": "string",
+      "required": true,
+      "maxLength": 4
+    },
+    "consultation_type": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "kind": "collectionType",
+  "collectionName": "exam_categories",
+  "info": {
+    "name": "exam_category",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "medical_examination_ids": {
+      "collection": "medical-examination",
+      "via": "exam_categories_id"
+    }
+  }
+}

@@ -1,0 +1,68 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/medical-appointments",
+      "handler": "medical-appointment.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/medical-appointments/count",
+      "handler": "medical-appointment.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/medical-appointments/:id",
+      "handler": "medical-appointment.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/medical-appointment",
+      "handler": "medical-appointment.save",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/confirm-code",
+      "handler": "medical-appointment.confirmCode",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/medical-appointments",
+      "handler": "medical-appointment.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/medical-appointments/:id",
+      "handler": "medical-appointment.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/medical-appointments/:id",
+      "handler": "medical-appointment.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

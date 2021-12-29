@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/exam-categories",
+      "handler": "exam-category.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/exam-categories/count",
+      "handler": "exam-category.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/exam-categories/:id",
+      "handler": "exam-category.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/exam-categories",
+      "handler": "exam-category.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/exam-categories/:id",
+      "handler": "exam-category.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/exam-categories/:id",
+      "handler": "exam-category.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "kind": "collectionType",
+  "collectionName": "medical_examinations",
+  "info": {
+    "name": "medical_examination",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "medical_appointments_id": {
+      "via": "medical_examination_id",
+      "collection": "medical-appointment"
+    },
+    "exam_categories_id": {
+      "via": "medical_examination_ids",
+      "model": "exam-category"
+    }
+  }
+}

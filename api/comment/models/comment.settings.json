@@ -1,0 +1,38 @@
+{
+  "kind": "collectionType",
+  "collectionName": "comments",
+  "info": {
+    "name": "comment",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "commentary": {
+      "type": "string"
+    },
+    "rate": {
+      "type": "integer",
+      "max": 5
+    },
+    "patient_id": {
+      "via": "comments_id",
+      "plugin": "users-permissions",
+      "model": "user"
+    },
+    "professional_id": {
+      "via": "comments_professional_id",
+      "plugin": "users-permissions",
+      "model": "user"
+    },
+    "publish": {
+      "type": "boolean",
+      "default": false,
+      "required": true
+    }
+  }
+}

@@ -1,0 +1,205 @@
+{
+  "kind": "collectionType",
+  "collectionName": "users-permissions_user",
+  "info": {
+    "name": "user",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false,
+    "timestamps": true
+  },
+  "attributes": {
+    "username": {
+      "type": "string",
+      "minLength": 3,
+      "unique": true,
+      "configurable": false,
+      "required": true
+    },
+    "email": {
+      "type": "email",
+      "minLength": 6,
+      "configurable": false,
+      "required": true
+    },
+    "provider": {
+      "type": "string",
+      "configurable": false
+    },
+    "password": {
+      "type": "password",
+      "minLength": 6,
+      "configurable": false,
+      "private": true
+    },
+    "resetPasswordToken": {
+      "type": "string",
+      "configurable": false,
+      "private": true
+    },
+    "confirmationToken": {
+      "type": "string",
+      "configurable": false,
+      "private": true
+    },
+    "confirmed": {
+      "type": "boolean",
+      "default": false,
+      "configurable": false
+    },
+    "blocked": {
+      "type": "boolean",
+      "default": false,
+      "configurable": false
+    },
+    "role": {
+      "model": "role",
+      "via": "users",
+      "plugin": "users-permissions",
+      "configurable": false
+    },
+    "first_name": {
+      "type": "string",
+      "required": true
+    },
+    "second_name": {
+      "type": "string"
+    },
+    "surname": {
+      "type": "string",
+      "required": true
+    },
+    "second_surname": {
+      "type": "string"
+    },
+    "identification_type": {
+      "type": "enumeration",
+      "enum": [
+        "CC",
+        "ID",
+        "PA"
+      ],
+      "required": false
+    },
+    "identification_document": {
+      "type": "string",
+      "required": false
+    },
+    "email_verified_at": {
+      "type": "datetime",
+      "required": false
+    },
+    "photo": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images"
+      ],
+      "plugin": "upload",
+      "required": false,
+      "pluginOptions": {}
+    },
+    "birthday": {
+      "type": "date",
+      "required": false
+    },
+    "phone_number": {
+      "type": "integer"
+    },
+    "cell_phone_number": {
+      "required": false,
+      "type": "integer"
+    },
+    "sex": {
+      "type": "enumeration",
+      "enum": [
+        "M",
+        "F",
+        "O"
+      ],
+      "required": false
+    },
+    "weight": {
+      "required": false,
+      "type": "integer"
+    },
+    "height": {
+      "type": "decimal",
+      "required": false
+    },
+    "blood_type": {
+      "type": "enumeration",
+      "enum": [
+        "A",
+        "B",
+        "AB",
+        "O"
+      ],
+      "required": false
+    },
+    "rh": {
+      "type": "enumeration",
+      "enum": [
+        "POSITIVE",
+        "NEGATIVE"
+      ],
+      "required": false
+    },
+    "occupation": {
+      "type": "string",
+      "required": false
+    },
+    "accept_insurance": {
+      "type": "enumeration",
+      "enum": [
+        "YES",
+        "NO"
+      ],
+      "required": false
+    },
+    "status": {
+      "type": "enumeration",
+      "enum": [
+        "ACTIVE",
+        "INACTIVE"
+      ]
+    },
+    "medical_appointments_id": {
+      "via": "patient_id",
+      "collection": "medical-appointment"
+    },
+    "medical_appointments_professional_id": {
+      "via": "professional_id",
+      "collection": "medical-appointment"
+    },
+    "specialties_has_users_id": {
+      "via": "users_id",
+      "collection": "specialties-has-user"
+    },
+    "city": {
+      "type": "string",
+      "required": false
+    },
+    "availability_hours_id": {
+      "via": "users_id",
+      "collection": "availability-hour"
+    },
+    "comments_id": {
+      "via": "patient_id",
+      "collection": "comment"
+    },
+    "comments_professional_id": {
+      "via": "professional_id",
+      "collection": "comment"
+    },
+    "insurance_id": {
+      "model": "insurance",
+      "via": "users_ids"
+    },
+    "insurance_has_user_id": {
+      "collection": "insurance-has-users",
+      "via": "user_id"
+    }
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/insurance-has-users",
+      "handler": "insurance-has-users.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/insurance-has-users/count",
+      "handler": "insurance-has-users.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/insurance-has-users/:id",
+      "handler": "insurance-has-users.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/insurance-has-users",
+      "handler": "insurance-has-users.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/insurance-has-users/:id",
+      "handler": "insurance-has-users.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/insurance-has-users/:id",
+      "handler": "insurance-has-users.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}
