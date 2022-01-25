@@ -20,6 +20,10 @@
     "availability_hours": {
       "type": "json",
       "required": true
+    },
+    "date": {
+      "type": "date",
+      "required": true
     }
   }
 }

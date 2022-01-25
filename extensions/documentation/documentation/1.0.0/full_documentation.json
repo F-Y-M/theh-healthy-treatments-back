@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "11/04/2021 10:44:22 PM"
+    "x-generation-date": "01/24/2022 10:14:30 PM"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -9910,7 +9910,8 @@
       "Availability-hour": {
         "required": [
           "id",
-          "availability_hours"
+          "availability_hours",
+          "date"
         ],
         "properties": {
           "id": {
@@ -10099,6 +10100,10 @@
           "availability_hours": {
             "type": "object"
           },
+          "date": {
+            "type": "string",
+            "format": "date"
+          },
           "published_at": {
             "type": "string",
             "format": "date-time"
@@ -10107,7 +10112,8 @@
       },
       "NewAvailability-hour": {
         "required": [
-          "availability_hours"
+          "availability_hours",
+          "date"
         ],
         "properties": {
           "users_id": {
@@ -10115,6 +10121,10 @@
           },
           "availability_hours": {
             "type": "object"
+          },
+          "date": {
+            "type": "string",
+            "format": "date"
           },
           "published_at": {
             "type": "string",
@@ -13687,7 +13697,8 @@
             "items": {
               "required": [
                 "id",
-                "availability_hours"
+                "availability_hours",
+                "date"
               ],
               "properties": {
                 "id": {
@@ -13698,6 +13709,9 @@
                 },
                 "availability_hours": {
                   "type": "object"
+                },
+                "date": {
+                  "type": "string"
                 },
                 "published_at": {
                   "type": "string"

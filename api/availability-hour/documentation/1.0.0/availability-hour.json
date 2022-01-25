@@ -530,7 +530,8 @@
       "Availability-hour": {
         "required": [
           "id",
-          "availability_hours"
+          "availability_hours",
+          "date"
         ],
         "properties": {
           "id": {
@@ -719,6 +720,10 @@
           "availability_hours": {
             "type": "object"
           },
+          "date": {
+            "type": "string",
+            "format": "date"
+          },
           "published_at": {
             "type": "string",
             "format": "date-time"
@@ -727,7 +732,8 @@
       },
       "NewAvailability-hour": {
         "required": [
-          "availability_hours"
+          "availability_hours",
+          "date"
         ],
         "properties": {
           "users_id": {
@@ -735,6 +741,10 @@
           },
           "availability_hours": {
             "type": "object"
+          },
+          "date": {
+            "type": "string",
+            "format": "date"
           },
           "published_at": {
             "type": "string",

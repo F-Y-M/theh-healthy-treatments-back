@@ -1569,7 +1569,8 @@
             "items": {
               "required": [
                 "id",
-                "availability_hours"
+                "availability_hours",
+                "date"
               ],
               "properties": {
                 "id": {
@@ -1580,6 +1581,9 @@
                 },
                 "availability_hours": {
                   "type": "object"
+                },
+                "date": {
+                  "type": "string"
                 },
                 "published_at": {
                   "type": "string"

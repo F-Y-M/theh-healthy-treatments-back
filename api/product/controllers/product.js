@@ -80,7 +80,7 @@ module.exports = {
     if (city != '' ) {
       query = query + `users.city LIKE "%${city}%" AND  `
     }
-    query = query + `avaHour.availability_hours LIKE "%${date}%" GROUP BY users.id,avaHour.date`
+    query = query + `avaHour.availability_hours LIKE "%${date}%" GROUP BY users.id, avaHour.date`
 
     const result = await strapi.connections.default.raw(query);
     console.log("query: ", result[0])
