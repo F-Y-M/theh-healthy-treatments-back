@@ -54,23 +54,23 @@ module.exports = {
   async search(ctx) {
     let { name, city, date, insurance } = ctx.request.query;
     let query =
-      "SELECT concat('Dr ',users.first_name, ', ', users.surname) as 'professionalFullName',\n" +
-      "users.first_name as 'first_name',\n" +
-      "users.id as 'id',\n" +
-      "users.city as 'city',\n" +
-      "files.url as 'photo',\n" +
-      "users.accept_insurance as 'acceptInsurance',\n" +
-      "spec.specialty as 'specialty',\n" +
-      "specUser.consultation_value as 'consultationValue',\n" +
-      "AVG(comments.rate) as 'rate',\n" +
-      "avaHour.availability_hours as 'availabilityHour'\n" +
+      "SELECT concat('Dr ',users.first_name, ', ', users.surname) as professionalFullName,\n" +
+      "users.first_name as first_name,\n" +
+      "users.id as id,\n" +
+      "users.city as city,\n" +
+      "files.url as photo,\n" +
+      "users.accept_insurance as acceptInsurance,\n" +
+      "spec.specialty as specialty,\n" +
+      "specUser.consultation_value as consultationValue,\n" +
+      "AVG(comments.rate) as rate,\n" +
+      "avaHour.availability_hours as availabilityHour\n" +
       "FROM `users-permissions_user` users\n" +
       "LEFT JOIN upload_file_morph as relatedFile on\n" +
       "relatedFile.related_type = 'users-permissions_user' AND\n" +
       "relatedFile.related_id = users.id\n" +
       "LEFT JOIN upload_file as files on\n" +
       "files.id = relatedFile.upload_file_id\n" +
-      "LEFT join comments on comments.professional_id = users.id AND users.role = 5\n" +
+      "LEFT join comments on comments.professional_id = users.id AND users.role = 1\n" +
       "LEFT join specialties_has_users specUser on specUser.users_id = users.id\n" +
       "LEFT join specialties spec on spec.id = specUser.specialty_id\n" +
       "LEFT join availability_hours avaHour on avaHour.users_id = users.id\n" +
