@@ -64,7 +64,7 @@ module.exports = {
       "specUser.consultation_value as consultationValue,\n" +
       "AVG(comments.rate) as rate,\n" +
       "avaHour.availability_hours as availabilityHour\n" +
-      "FROM `users-permissions_user` users\n" +
+      "FROM 'users-permissions_user' users\n" +
       "LEFT JOIN upload_file_morph as relatedFile on\n" +
       "relatedFile.related_type = 'users-permissions_user' AND\n" +
       "relatedFile.related_id = users.id\n" +
