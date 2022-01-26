@@ -26,8 +26,8 @@
     },
     {
       "method": "GET",
-      "path": "/test",
-      "handler": "product.prueba",
+      "path": "/medical-record-short-search",
+      "handler": "product.medicalRecordShortSearch",
       "config": {
         "policies": []
       }

@@ -368,7 +368,7 @@
         "parameters": []
       }
     },
-    "/test": {
+    "/medical-record-short-search": {
       "get": {
         "deprecated": false,
         "description": "",

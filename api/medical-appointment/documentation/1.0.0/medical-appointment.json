@@ -746,8 +746,7 @@
               "diagnosis",
               "treatment_plan",
               "analysis",
-              "recommendations",
-              "pdf"
+              "recommendations"
             ],
             "properties": {
               "id": {
@@ -793,7 +792,10 @@
                 "type": "string"
               },
               "pdf": {
-                "type": "string"
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
               },
               "published_at": {
                 "type": "string"
