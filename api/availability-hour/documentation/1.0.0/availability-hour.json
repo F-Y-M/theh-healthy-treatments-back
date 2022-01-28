@@ -709,6 +709,15 @@
                   "type": "string"
                 }
               },
+              "address": {
+                "type": "string"
+              },
+              "medical_records_id": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
               "created_by": {
                 "type": "string"
               },

@@ -657,6 +657,195 @@
               }
             }
           },
+          "professional_id": {
+            "required": [
+              "id",
+              "username",
+              "email",
+              "first_name",
+              "surname"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "username": {
+                "type": "string"
+              },
+              "email": {
+                "type": "string"
+              },
+              "provider": {
+                "type": "string"
+              },
+              "password": {
+                "type": "string"
+              },
+              "resetPasswordToken": {
+                "type": "string"
+              },
+              "confirmationToken": {
+                "type": "string"
+              },
+              "confirmed": {
+                "type": "boolean"
+              },
+              "blocked": {
+                "type": "boolean"
+              },
+              "role": {
+                "type": "string"
+              },
+              "first_name": {
+                "type": "string"
+              },
+              "second_name": {
+                "type": "string"
+              },
+              "surname": {
+                "type": "string"
+              },
+              "second_surname": {
+                "type": "string"
+              },
+              "identification_type": {
+                "type": "string",
+                "enum": [
+                  "CC",
+                  "ID",
+                  "PA"
+                ]
+              },
+              "identification_document": {
+                "type": "string"
+              },
+              "email_verified_at": {
+                "type": "string"
+              },
+              "photo": {
+                "type": "string"
+              },
+              "birthday": {
+                "type": "string"
+              },
+              "phone_number": {
+                "type": "integer"
+              },
+              "cell_phone_number": {
+                "type": "integer"
+              },
+              "sex": {
+                "type": "string",
+                "enum": [
+                  "M",
+                  "F",
+                  "O"
+                ]
+              },
+              "weight": {
+                "type": "integer"
+              },
+              "height": {
+                "type": "number"
+              },
+              "blood_type": {
+                "type": "string",
+                "enum": [
+                  "A",
+                  "B",
+                  "AB",
+                  "O"
+                ]
+              },
+              "rh": {
+                "type": "string",
+                "enum": [
+                  "POSITIVE",
+                  "NEGATIVE"
+                ]
+              },
+              "occupation": {
+                "type": "string"
+              },
+              "accept_insurance": {
+                "type": "string",
+                "enum": [
+                  "YES",
+                  "NO"
+                ]
+              },
+              "status": {
+                "type": "string",
+                "enum": [
+                  "ACTIVE",
+                  "INACTIVE"
+                ]
+              },
+              "medical_appointments_id": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "medical_appointments_professional_id": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "specialties_has_users_id": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "city": {
+                "type": "string"
+              },
+              "availability_hours_id": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "comments_id": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "comments_professional_id": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "insurance_id": {
+                "type": "string"
+              },
+              "insurance_has_user_id": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "address": {
+                "type": "string"
+              },
+              "medical_records_id": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "created_by": {
+                "type": "string"
+              },
+              "updated_by": {
+                "type": "string"
+              }
+            }
+          },
           "published_at": {
             "type": "string",
             "format": "date-time"
@@ -717,6 +906,9 @@
             "type": "string"
           },
           "recommendations": {
+            "type": "string"
+          },
+          "professional_id": {
             "type": "string"
           },
           "published_at": {

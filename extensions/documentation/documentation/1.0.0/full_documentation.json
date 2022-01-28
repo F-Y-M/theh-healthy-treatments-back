@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "01/25/2022 7:36:17 PM"
+    "x-generation-date": "01/26/2022 8:29:01 PM"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -10089,6 +10089,15 @@
                   "type": "string"
                 }
               },
+              "address": {
+                "type": "string"
+              },
+              "medical_records_id": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
               "created_by": {
                 "type": "string"
               },
@@ -10417,6 +10426,15 @@
                   "type": "string"
                 }
               },
+              "address": {
+                "type": "string"
+              },
+              "medical_records_id": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
               "created_by": {
                 "type": "string"
               },
@@ -10592,6 +10610,15 @@
                 "type": "string"
               },
               "insurance_has_user_id": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "address": {
+                "type": "string"
+              },
+              "medical_records_id": {
                 "type": "array",
                 "items": {
                   "type": "string"
@@ -11093,6 +11120,15 @@
                   "type": "string"
                 }
               },
+              "address": {
+                "type": "string"
+              },
+              "medical_records_id": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
               "created_by": {
                 "type": "string"
               },
@@ -11319,6 +11355,15 @@
                     "type": "string"
                   }
                 },
+                "address": {
+                  "type": "string"
+                },
+                "medical_records_id": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
                 "created_by": {
                   "type": "string"
                 },
@@ -11525,6 +11570,9 @@
                 "items": {
                   "type": "string"
                 }
+              },
+              "professional_id": {
+                "type": "string"
               },
               "published_at": {
                 "type": "string"
@@ -11753,6 +11801,15 @@
                   "type": "string"
                 }
               },
+              "address": {
+                "type": "string"
+              },
+              "medical_records_id": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
               "created_by": {
                 "type": "string"
               },
@@ -11928,6 +11985,15 @@
                 "type": "string"
               },
               "insurance_has_user_id": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "address": {
+                "type": "string"
+              },
+              "medical_records_id": {
                 "type": "array",
                 "items": {
                   "type": "string"
@@ -12277,6 +12343,195 @@
               }
             }
           },
+          "professional_id": {
+            "required": [
+              "id",
+              "username",
+              "email",
+              "first_name",
+              "surname"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "username": {
+                "type": "string"
+              },
+              "email": {
+                "type": "string"
+              },
+              "provider": {
+                "type": "string"
+              },
+              "password": {
+                "type": "string"
+              },
+              "resetPasswordToken": {
+                "type": "string"
+              },
+              "confirmationToken": {
+                "type": "string"
+              },
+              "confirmed": {
+                "type": "boolean"
+              },
+              "blocked": {
+                "type": "boolean"
+              },
+              "role": {
+                "type": "string"
+              },
+              "first_name": {
+                "type": "string"
+              },
+              "second_name": {
+                "type": "string"
+              },
+              "surname": {
+                "type": "string"
+              },
+              "second_surname": {
+                "type": "string"
+              },
+              "identification_type": {
+                "type": "string",
+                "enum": [
+                  "CC",
+                  "ID",
+                  "PA"
+                ]
+              },
+              "identification_document": {
+                "type": "string"
+              },
+              "email_verified_at": {
+                "type": "string"
+              },
+              "photo": {
+                "type": "string"
+              },
+              "birthday": {
+                "type": "string"
+              },
+              "phone_number": {
+                "type": "integer"
+              },
+              "cell_phone_number": {
+                "type": "integer"
+              },
+              "sex": {
+                "type": "string",
+                "enum": [
+                  "M",
+                  "F",
+                  "O"
+                ]
+              },
+              "weight": {
+                "type": "integer"
+              },
+              "height": {
+                "type": "number"
+              },
+              "blood_type": {
+                "type": "string",
+                "enum": [
+                  "A",
+                  "B",
+                  "AB",
+                  "O"
+                ]
+              },
+              "rh": {
+                "type": "string",
+                "enum": [
+                  "POSITIVE",
+                  "NEGATIVE"
+                ]
+              },
+              "occupation": {
+                "type": "string"
+              },
+              "accept_insurance": {
+                "type": "string",
+                "enum": [
+                  "YES",
+                  "NO"
+                ]
+              },
+              "status": {
+                "type": "string",
+                "enum": [
+                  "ACTIVE",
+                  "INACTIVE"
+                ]
+              },
+              "medical_appointments_id": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "medical_appointments_professional_id": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "specialties_has_users_id": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "city": {
+                "type": "string"
+              },
+              "availability_hours_id": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "comments_id": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "comments_professional_id": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "insurance_id": {
+                "type": "string"
+              },
+              "insurance_has_user_id": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "address": {
+                "type": "string"
+              },
+              "medical_records_id": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "created_by": {
+                "type": "string"
+              },
+              "updated_by": {
+                "type": "string"
+              }
+            }
+          },
           "published_at": {
             "type": "string",
             "format": "date-time"
@@ -12337,6 +12592,9 @@
             "type": "string"
           },
           "recommendations": {
+            "type": "string"
+          },
+          "professional_id": {
             "type": "string"
           },
           "published_at": {
@@ -12890,6 +13148,15 @@
                   "type": "string"
                 }
               },
+              "address": {
+                "type": "string"
+              },
+              "medical_records_id": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
               "created_by": {
                 "type": "string"
               },
@@ -13325,6 +13592,15 @@
                   "type": "string"
                 },
                 "insurance_has_user_id": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "address": {
+                  "type": "string"
+                },
+                "medical_records_id": {
                   "type": "array",
                   "items": {
                     "type": "string"
@@ -13933,6 +14209,92 @@
                 }
               }
             }
+          },
+          "address": {
+            "type": "string"
+          },
+          "medical_records_id": {
+            "type": "array",
+            "items": {
+              "required": [
+                "id",
+                "current_illness_patient",
+                "history_of_current_illness_patient",
+                "personal_history_patient",
+                "additional_comments_patient",
+                "current_illness",
+                "systems_review",
+                "background",
+                "physical_exam",
+                "evaluation",
+                "diagnosis",
+                "treatment_plan",
+                "analysis",
+                "recommendations"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "current_illness_patient": {
+                  "type": "string"
+                },
+                "history_of_current_illness_patient": {
+                  "type": "string"
+                },
+                "personal_history_patient": {
+                  "type": "string"
+                },
+                "additional_comments_patient": {
+                  "type": "string"
+                },
+                "current_illness": {
+                  "type": "string"
+                },
+                "systems_review": {
+                  "type": "string"
+                },
+                "background": {
+                  "type": "string"
+                },
+                "physical_exam": {
+                  "type": "string"
+                },
+                "evaluation": {
+                  "type": "string"
+                },
+                "diagnosis": {
+                  "type": "string"
+                },
+                "treatment_plan": {
+                  "type": "string"
+                },
+                "analysis": {
+                  "type": "string"
+                },
+                "recommendations": {
+                  "type": "string"
+                },
+                "pdf": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "professional_id": {
+                  "type": "string"
+                },
+                "published_at": {
+                  "type": "string"
+                },
+                "created_by": {
+                  "type": "string"
+                },
+                "updated_by": {
+                  "type": "string"
+                }
+              }
+            }
           }
         }
       },
@@ -14104,6 +14466,15 @@
             "type": "string"
           },
           "insurance_has_user_id": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "address": {
+            "type": "string"
+          },
+          "medical_records_id": {
             "type": "array",
             "items": {
               "type": "string"

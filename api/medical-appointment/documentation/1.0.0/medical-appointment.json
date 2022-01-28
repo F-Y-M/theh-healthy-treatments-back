@@ -797,6 +797,9 @@
                   "type": "string"
                 }
               },
+              "professional_id": {
+                "type": "string"
+              },
               "published_at": {
                 "type": "string"
               },
@@ -1024,6 +1027,15 @@
                   "type": "string"
                 }
               },
+              "address": {
+                "type": "string"
+              },
+              "medical_records_id": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
               "created_by": {
                 "type": "string"
               },
@@ -1199,6 +1211,15 @@
                 "type": "string"
               },
               "insurance_has_user_id": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "address": {
+                "type": "string"
+              },
+              "medical_records_id": {
                 "type": "array",
                 "items": {
                   "type": "string"

@@ -200,6 +200,13 @@
     "insurance_has_user_id": {
       "collection": "insurance-has-users",
       "via": "user_id"
+    },
+    "address": {
+      "type": "string"
+    },
+    "medical_records_id": {
+      "via": "professional_id",
+      "collection": "medical-record"
     }
   }
 }
