@@ -8,7 +8,7 @@
   "options": {
     "increments": true,
     "timestamps": true,
-    "draftAndPublish": true
+    "draftAndPublish": false
   },
   "pluginOptions": {},
   "attributes": {
@@ -33,6 +33,10 @@
       "type": "boolean",
       "default": false,
       "required": true
+    },
+    "medical_appointment_id": {
+      "via": "comment_id",
+      "model": "medical-appointment"
     }
   }
 }

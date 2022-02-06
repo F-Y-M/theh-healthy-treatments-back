@@ -1270,7 +1270,8 @@
             "enum": [
               "CC",
               "ID",
-              "PA"
+              "PA",
+              "DNI"
             ]
           },
           "identification_document": {
@@ -1409,8 +1410,7 @@
             "items": {
               "required": [
                 "id",
-                "code",
-                "consultation_type"
+                "code"
               ],
               "properties": {
                 "id": {
@@ -1456,6 +1456,9 @@
                   "type": "string"
                 },
                 "consultation_type": {
+                  "type": "string"
+                },
+                "comment_id": {
                   "type": "string"
                 },
                 "created_by": {
@@ -1472,8 +1475,7 @@
             "items": {
               "required": [
                 "id",
-                "code",
-                "consultation_type"
+                "code"
               ],
               "properties": {
                 "id": {
@@ -1519,6 +1521,9 @@
                   "type": "string"
                 },
                 "consultation_type": {
+                  "type": "string"
+                },
+                "comment_id": {
                   "type": "string"
                 },
                 "created_by": {
@@ -1623,7 +1628,7 @@
                 "publish": {
                   "type": "boolean"
                 },
-                "published_at": {
+                "medical_appointment_id": {
                   "type": "string"
                 },
                 "created_by": {
@@ -1661,7 +1666,7 @@
                 "publish": {
                   "type": "boolean"
                 },
-                "published_at": {
+                "medical_appointment_id": {
                   "type": "string"
                 },
                 "created_by": {
@@ -1827,6 +1832,9 @@
                 }
               }
             }
+          },
+          "consulting_room": {
+            "type": "string"
           }
         }
       },
@@ -1888,7 +1896,8 @@
             "enum": [
               "CC",
               "ID",
-              "PA"
+              "PA",
+              "DNI"
             ]
           },
           "identification_document": {
@@ -2011,6 +2020,9 @@
             "items": {
               "type": "string"
             }
+          },
+          "consulting_room": {
+            "type": "string"
           },
           "created_by": {
             "type": "string"

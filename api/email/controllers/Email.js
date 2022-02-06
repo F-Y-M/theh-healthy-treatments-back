@@ -10,12 +10,13 @@ module.exports = {
      * Sends an email to the recipient in the body of the request
      */
     send: async (ctx) => {
-        const request = ctx.request.request
-        console.log("esto es el request: ", request)
-        const id = request.id
-        const body = request.body
+        const request = ctx.request.body
+        // console.log("CONTXT: ", ctx)
+        // console.log("esto es el request: ", request)
+        // const body = request.body
         const sendTo = request.email
-        strapi.log.debug(`Trying to send an email to ${sendTo}`)
+        const code = request.code
+        strapi.log.debug(`Trying to send an email to ${code}`)
 
         try {
             const emailOptions = {
@@ -345,7 +346,7 @@ module.exports = {
                html: `
                 <div>
                     <p>Escribe este codigo para confirmar la cita medica</p>
-                    <p>${codigo}</p>
+                    <p>${code}</p>
                 </div>
                `
             }
@@ -354,6 +355,7 @@ module.exports = {
             ctx.send({ message: 'Email sent' })
         } catch (err) {
             strapi.log.error(`Error sending email to ${sendTo}`, err)
+            console.log("Error", err)
             ctx.send({ error: 'Error sending email' })
         }
     },

@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "01/26/2022 8:29:01 PM"
+    "x-generation-date": "02/06/2022 10:41:28 AM"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -2104,7 +2104,7 @@
         ]
       }
     },
-    "/emails": {
+    "/resend-code": {
       "post": {
         "deprecated": false,
         "description": "Create a new record",
@@ -4258,13 +4258,13 @@
         ]
       }
     },
-    "/medical-appointment": {
+    "/assign-date": {
       "post": {
         "deprecated": false,
-        "description": "Create a new medical-appointment record",
+        "description": "Create a new record",
         "responses": {
           "200": {
-            "description": "Retrieve medical-appointment document(s)",
+            "description": "response",
             "content": {
               "application/json": {
                 "schema": {
@@ -6328,6 +6328,63 @@
       }
     },
     "/medical-record-short-search": {
+      "get": {
+        "deprecated": false,
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "foo": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "summary": "",
+        "tags": [
+          "Product"
+        ],
+        "parameters": []
+      }
+    },
+    "/medical-record-search": {
       "get": {
         "deprecated": false,
         "description": "",
@@ -9973,7 +10030,8 @@
                 "enum": [
                   "CC",
                   "ID",
-                  "PA"
+                  "PA",
+                  "DNI"
                 ]
               },
               "identification_document": {
@@ -10097,6 +10155,9 @@
                 "items": {
                   "type": "string"
                 }
+              },
+              "consulting_room": {
+                "type": "string"
               },
               "created_by": {
                 "type": "string"
@@ -10310,7 +10371,8 @@
                 "enum": [
                   "CC",
                   "ID",
-                  "PA"
+                  "PA",
+                  "DNI"
                 ]
               },
               "identification_document": {
@@ -10434,6 +10496,9 @@
                 "items": {
                   "type": "string"
                 }
+              },
+              "consulting_room": {
+                "type": "string"
               },
               "created_by": {
                 "type": "string"
@@ -10499,7 +10564,8 @@
                 "enum": [
                   "CC",
                   "ID",
-                  "PA"
+                  "PA",
+                  "DNI"
                 ]
               },
               "identification_document": {
@@ -10624,6 +10690,9 @@
                   "type": "string"
                 }
               },
+              "consulting_room": {
+                "type": "string"
+              },
               "created_by": {
                 "type": "string"
               },
@@ -10636,9 +10705,67 @@
             "type": "boolean",
             "default": false
           },
-          "published_at": {
-            "type": "string",
-            "format": "date-time"
+          "medical_appointment_id": {
+            "required": [
+              "id",
+              "code"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "date": {
+                "type": "string"
+              },
+              "current_appointment_time": {
+                "type": "string"
+              },
+              "status": {
+                "type": "string",
+                "enum": [
+                  "Slope",
+                  "Confirmed",
+                  "In_progress",
+                  "Finished",
+                  "Not_attended_by_the_patient",
+                  "Not_attended_by_the_doctor",
+                  "Not_attended_by_the_laboratory"
+                ]
+              },
+              "medical_examination_id": {
+                "type": "string"
+              },
+              "medical_record_id": {
+                "type": "string"
+              },
+              "payment_id": {
+                "type": "string"
+              },
+              "patient_id": {
+                "type": "string"
+              },
+              "professional_id": {
+                "type": "string"
+              },
+              "reason_for_consultation": {
+                "type": "string"
+              },
+              "code": {
+                "type": "string"
+              },
+              "consultation_type": {
+                "type": "string"
+              },
+              "comment_id": {
+                "type": "string"
+              },
+              "created_by": {
+                "type": "string"
+              },
+              "updated_by": {
+                "type": "string"
+              }
+            }
           }
         }
       },
@@ -10663,9 +10790,8 @@
             "type": "boolean",
             "default": false
           },
-          "published_at": {
-            "type": "string",
-            "format": "date-time"
+          "medical_appointment_id": {
+            "type": "string"
           },
           "created_by": {
             "type": "string"
@@ -11004,7 +11130,8 @@
                 "enum": [
                   "CC",
                   "ID",
-                  "PA"
+                  "PA",
+                  "DNI"
                 ]
               },
               "identification_document": {
@@ -11129,6 +11256,9 @@
                   "type": "string"
                 }
               },
+              "consulting_room": {
+                "type": "string"
+              },
               "created_by": {
                 "type": "string"
               },
@@ -11239,7 +11369,8 @@
                   "enum": [
                     "CC",
                     "ID",
-                    "PA"
+                    "PA",
+                    "DNI"
                   ]
                 },
                 "identification_document": {
@@ -11364,6 +11495,9 @@
                     "type": "string"
                   }
                 },
+                "consulting_room": {
+                  "type": "string"
+                },
                 "created_by": {
                   "type": "string"
                 },
@@ -11446,8 +11580,7 @@
       "Medical-appointment": {
         "required": [
           "id",
-          "code",
-          "consultation_type"
+          "code"
         ],
         "properties": {
           "id": {
@@ -11685,7 +11818,8 @@
                 "enum": [
                   "CC",
                   "ID",
-                  "PA"
+                  "PA",
+                  "DNI"
                 ]
               },
               "identification_document": {
@@ -11809,6 +11943,9 @@
                 "items": {
                   "type": "string"
                 }
+              },
+              "consulting_room": {
+                "type": "string"
               },
               "created_by": {
                 "type": "string"
@@ -11874,7 +12011,8 @@
                 "enum": [
                   "CC",
                   "ID",
-                  "PA"
+                  "PA",
+                  "DNI"
                 ]
               },
               "identification_document": {
@@ -11999,6 +12137,9 @@
                   "type": "string"
                 }
               },
+              "consulting_room": {
+                "type": "string"
+              },
               "created_by": {
                 "type": "string"
               },
@@ -12016,13 +12157,47 @@
           },
           "consultation_type": {
             "type": "string"
+          },
+          "comment_id": {
+            "required": [
+              "id",
+              "publish"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "commentary": {
+                "type": "string"
+              },
+              "rate": {
+                "type": "integer"
+              },
+              "patient_id": {
+                "type": "string"
+              },
+              "professional_id": {
+                "type": "string"
+              },
+              "publish": {
+                "type": "boolean"
+              },
+              "medical_appointment_id": {
+                "type": "string"
+              },
+              "created_by": {
+                "type": "string"
+              },
+              "updated_by": {
+                "type": "string"
+              }
+            }
           }
         }
       },
       "NewMedical-appointment": {
         "required": [
-          "code",
-          "consultation_type"
+          "code"
         ],
         "properties": {
           "date": {
@@ -12071,6 +12246,9 @@
           "consultation_type": {
             "type": "string"
           },
+          "comment_id": {
+            "type": "string"
+          },
           "created_by": {
             "type": "string"
           },
@@ -12095,8 +12273,7 @@
             "items": {
               "required": [
                 "id",
-                "code",
-                "consultation_type"
+                "code"
               ],
               "properties": {
                 "id": {
@@ -12142,6 +12319,9 @@
                   "type": "string"
                 },
                 "consultation_type": {
+                  "type": "string"
+                },
+                "comment_id": {
                   "type": "string"
                 },
                 "created_by": {
@@ -12399,7 +12579,8 @@
                 "enum": [
                   "CC",
                   "ID",
-                  "PA"
+                  "PA",
+                  "DNI"
                 ]
               },
               "identification_document": {
@@ -12524,6 +12705,9 @@
                   "type": "string"
                 }
               },
+              "consulting_room": {
+                "type": "string"
+              },
               "created_by": {
                 "type": "string"
               },
@@ -12635,8 +12819,7 @@
           "medical_appointment_id": {
             "required": [
               "id",
-              "code",
-              "consultation_type"
+              "code"
             ],
             "properties": {
               "id": {
@@ -12682,6 +12865,9 @@
                 "type": "string"
               },
               "consultation_type": {
+                "type": "string"
+              },
+              "comment_id": {
                 "type": "string"
               },
               "created_by": {
@@ -13032,7 +13218,8 @@
                 "enum": [
                   "CC",
                   "ID",
-                  "PA"
+                  "PA",
+                  "DNI"
                 ]
               },
               "identification_document": {
@@ -13156,6 +13343,9 @@
                 "items": {
                   "type": "string"
                 }
+              },
+              "consulting_room": {
+                "type": "string"
               },
               "created_by": {
                 "type": "string"
@@ -13481,7 +13671,8 @@
                   "enum": [
                     "CC",
                     "ID",
-                    "PA"
+                    "PA",
+                    "DNI"
                   ]
                 },
                 "identification_document": {
@@ -13605,6 +13796,9 @@
                   "items": {
                     "type": "string"
                   }
+                },
+                "consulting_room": {
+                  "type": "string"
                 },
                 "created_by": {
                   "type": "string"
@@ -13738,7 +13932,8 @@
             "enum": [
               "CC",
               "ID",
-              "PA"
+              "PA",
+              "DNI"
             ]
           },
           "identification_document": {
@@ -13877,8 +14072,7 @@
             "items": {
               "required": [
                 "id",
-                "code",
-                "consultation_type"
+                "code"
               ],
               "properties": {
                 "id": {
@@ -13924,6 +14118,9 @@
                   "type": "string"
                 },
                 "consultation_type": {
+                  "type": "string"
+                },
+                "comment_id": {
                   "type": "string"
                 },
                 "created_by": {
@@ -13940,8 +14137,7 @@
             "items": {
               "required": [
                 "id",
-                "code",
-                "consultation_type"
+                "code"
               ],
               "properties": {
                 "id": {
@@ -13987,6 +14183,9 @@
                   "type": "string"
                 },
                 "consultation_type": {
+                  "type": "string"
+                },
+                "comment_id": {
                   "type": "string"
                 },
                 "created_by": {
@@ -14091,7 +14290,7 @@
                 "publish": {
                   "type": "boolean"
                 },
-                "published_at": {
+                "medical_appointment_id": {
                   "type": "string"
                 },
                 "created_by": {
@@ -14129,7 +14328,7 @@
                 "publish": {
                   "type": "boolean"
                 },
-                "published_at": {
+                "medical_appointment_id": {
                   "type": "string"
                 },
                 "created_by": {
@@ -14295,6 +14494,9 @@
                 }
               }
             }
+          },
+          "consulting_room": {
+            "type": "string"
           }
         }
       },
@@ -14356,7 +14558,8 @@
             "enum": [
               "CC",
               "ID",
-              "PA"
+              "PA",
+              "DNI"
             ]
           },
           "identification_document": {
@@ -14479,6 +14682,9 @@
             "items": {
               "type": "string"
             }
+          },
+          "consulting_room": {
+            "type": "string"
           },
           "created_by": {
             "type": "string"

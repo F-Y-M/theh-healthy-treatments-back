@@ -75,9 +75,9 @@
       "pluginOptions": {}
     },
     "professional_id": {
+      "via": "medical_records_id",
       "plugin": "users-permissions",
-      "model": "user",
-      "via": "medical_records_id"
+      "model": "user"
     }
   }
 }

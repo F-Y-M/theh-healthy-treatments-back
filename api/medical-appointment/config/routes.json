@@ -26,8 +26,8 @@
     },
     {
       "method": "POST",
-      "path": "/medical-appointment",
-      "handler": "medical-appointment.save",
+      "path": "/assign-date",
+      "handler": "medical-appointment.assignDate",
       "config": {
         "policies": []
       }

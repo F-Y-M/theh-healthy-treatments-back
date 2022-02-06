@@ -593,7 +593,8 @@
                 "enum": [
                   "CC",
                   "ID",
-                  "PA"
+                  "PA",
+                  "DNI"
                 ]
               },
               "identification_document": {
@@ -717,6 +718,9 @@
                 "items": {
                   "type": "string"
                 }
+              },
+              "consulting_room": {
+                "type": "string"
               },
               "created_by": {
                 "type": "string"

@@ -78,7 +78,8 @@
       "enum": [
         "CC",
         "ID",
-        "PA"
+        "PA",
+        "DNI"
       ],
       "required": false
     },
@@ -207,6 +208,9 @@
     "medical_records_id": {
       "via": "professional_id",
       "collection": "medical-record"
+    },
+    "consulting_room": {
+      "type": "string"
     }
   }
 }

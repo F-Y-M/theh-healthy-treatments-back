@@ -68,23 +68,25 @@ module.exports = {
       "LEFT JOIN upload_file_morph as relatedFile on\n" +
       "relatedFile.related_type = 'users-permissions_user' AND\n" +
       "relatedFile.related_id = users.id\n" +
-      "LEFT JOIN upload_file as files on\n" +
-      "files.id = relatedFile.upload_file_id\n" +
+      "LEFT JOIN upload_file files on files.id = relatedFile.upload_file_id\n" +
       "LEFT join comments on comments.professional_id = users.id AND users.role = 5\n" +
       "LEFT join specialties_has_users specUser on specUser.users_id = users.id\n" +
       "LEFT join specialties spec on spec.id = specUser.specialty_id\n" +
       "LEFT join availability_hours avaHour on avaHour.users_id = users.id\n" +
       "WHERE ";
     if (name != "") {
-      query = query + `spec.specialty = "${name}" AND `;
+      query = query + `spec.specialty like "${name}" `;
     }
+    
+    if(name !== "" && city !== "") query = quey + "AND\n"
+
     if (city != "") {
       query = query + `users.city LIKE "%${city}%"  `;
     }
     query = query + ` GROUP BY users.id, avaHour.date`;
 
+
     const result = await strapi.connections.default.raw(query);
-    console.log("query: ", result[0]);
     let before;
     let array = [];
     result[0].map((item) => {
@@ -106,6 +108,7 @@ module.exports = {
     });
     return array;
   },
+
   async medicalRecordShortSearch(ctx) {
     const { patient_id } = ctx.request.query;
     const query =
@@ -116,15 +119,46 @@ module.exports = {
         ma.status as status,
         concat('Dr ',professional.first_name, ', ', professional.surname) as professionalFullName,
         spec.specialty as specialty,
-        specUser.consultation_value as consultationValue
+        specUser.consultation_value as consultationValue,
+        professional.address as address
 
       FROM medical_appointments ma
       LEFT JOIN medical_records as mr on mr.id = medical_record_id\n` +
-      "LEFT JOIN `users-permissions_user` as professional on ma.professional_id = professional.id \n" + 
+      "LEFT JOIN `users-permissions_user` as professional on ma.professional_id = professional.id \n" +
       `LEFT join specialties_has_users specUser on specUser.users_id = professional.id
       LEFT join specialties spec on spec.id = specUser.specialty_id
       WHERE patient_id = ${patient_id}
       GROUP BY ma.medical_record_id;`;
+    const result = await strapi.connections.default.raw(query);
+    return result[0];
+  },
+
+  async medicalRecordSearch(ctx) {
+    const { patient_id } = ctx.request.query;
+    const query =
+      `SELECT 
+        ma.id as medicalAppointmentId,
+        ma.reason_for_consultation as reason,
+        ma.status as status,
+        ma.consultation_type as type,
+        ma.date as date,
+        concat('Dr ',professional.first_name, ', ', professional.surname) as 'professionalFullName',
+        professional.id as professionalId,
+        professional.consulting_room as consultingRoom,
+        professional.address as address,
+        spec.specialty as 'specialty',
+        specUser.consultation_value as 'consultationValue',
+        commentary.rate as rate,
+        commentary.commentary as review
+    
+    FROM medical_appointments ma
+      LEFT JOIN medical_records as mr on mr.id = ma.medical_record_id \n` +
+      "LEFT JOIN `users-permissions_user` as professional on ma.professional_id = professional.id \n" +
+      `LEFT JOIN specialties_has_users specUser on specUser.users_id = professional.id
+      LEFT JOIN specialties spec on spec.id = specUser.specialty_id
+      LEFT JOIN comments commentary on ma.comment_id = commentary.id \n` +
+      `WHERE ma.patient_id = ${patient_id}
+    GROUP BY ma.medical_record_id;`;
     const result = await strapi.connections.default.raw(query);
     return result[0];
   },

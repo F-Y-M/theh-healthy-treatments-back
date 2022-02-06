@@ -1,6 +1,6 @@
 {
   "paths": {
-    "/emails": {
+    "/resend-code": {
       "post": {
         "deprecated": false,
         "description": "Create a new record",

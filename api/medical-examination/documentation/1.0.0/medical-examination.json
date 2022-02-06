@@ -543,8 +543,7 @@
             "items": {
               "required": [
                 "id",
-                "code",
-                "consultation_type"
+                "code"
               ],
               "properties": {
                 "id": {
@@ -590,6 +589,9 @@
                   "type": "string"
                 },
                 "consultation_type": {
+                  "type": "string"
+                },
+                "comment_id": {
                   "type": "string"
                 },
                 "created_by": {

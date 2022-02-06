@@ -2,7 +2,7 @@
     "routes": [
       {
         "method": "POST",
-        "path": "/emails",
+        "path": "/resend-code",
         "handler": "Email.send",
         "config": {}
       }

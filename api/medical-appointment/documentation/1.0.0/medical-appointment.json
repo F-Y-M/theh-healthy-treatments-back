@@ -524,13 +524,13 @@
         ]
       }
     },
-    "/medical-appointment": {
+    "/assign-date": {
       "post": {
         "deprecated": false,
-        "description": "Create a new medical-appointment record",
+        "description": "Create a new record",
         "responses": {
           "200": {
-            "description": "Retrieve medical-appointment document(s)",
+            "description": "response",
             "content": {
               "application/json": {
                 "schema": {
@@ -672,8 +672,7 @@
       "Medical-appointment": {
         "required": [
           "id",
-          "code",
-          "consultation_type"
+          "code"
         ],
         "properties": {
           "id": {
@@ -911,7 +910,8 @@
                 "enum": [
                   "CC",
                   "ID",
-                  "PA"
+                  "PA",
+                  "DNI"
                 ]
               },
               "identification_document": {
@@ -1035,6 +1035,9 @@
                 "items": {
                   "type": "string"
                 }
+              },
+              "consulting_room": {
+                "type": "string"
               },
               "created_by": {
                 "type": "string"
@@ -1100,7 +1103,8 @@
                 "enum": [
                   "CC",
                   "ID",
-                  "PA"
+                  "PA",
+                  "DNI"
                 ]
               },
               "identification_document": {
@@ -1225,6 +1229,9 @@
                   "type": "string"
                 }
               },
+              "consulting_room": {
+                "type": "string"
+              },
               "created_by": {
                 "type": "string"
               },
@@ -1242,13 +1249,47 @@
           },
           "consultation_type": {
             "type": "string"
+          },
+          "comment_id": {
+            "required": [
+              "id",
+              "publish"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "commentary": {
+                "type": "string"
+              },
+              "rate": {
+                "type": "integer"
+              },
+              "patient_id": {
+                "type": "string"
+              },
+              "professional_id": {
+                "type": "string"
+              },
+              "publish": {
+                "type": "boolean"
+              },
+              "medical_appointment_id": {
+                "type": "string"
+              },
+              "created_by": {
+                "type": "string"
+              },
+              "updated_by": {
+                "type": "string"
+              }
+            }
           }
         }
       },
       "NewMedical-appointment": {
         "required": [
-          "code",
-          "consultation_type"
+          "code"
         ],
         "properties": {
           "date": {
@@ -1295,6 +1336,9 @@
             "maxLength": 4
           },
           "consultation_type": {
+            "type": "string"
+          },
+          "comment_id": {
             "type": "string"
           },
           "created_by": {

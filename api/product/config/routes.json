@@ -34,6 +34,14 @@
     },
     {
       "method": "GET",
+      "path": "/medical-record-search",
+      "handler": "product.medicalRecordSearch",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
       "path": "/products/count",
       "handler": "product.count",
       "config": {

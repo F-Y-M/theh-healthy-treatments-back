@@ -64,7 +64,11 @@
     },
     "consultation_type": {
       "type": "string",
-      "required": true
+      "required": false
+    },
+    "comment_id": {
+      "via": "medical_appointment_id",
+      "model": "comment"
     }
   }
 }
