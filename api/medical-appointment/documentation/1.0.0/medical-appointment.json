@@ -796,9 +796,6 @@
                   "type": "string"
                 }
               },
-              "professional_id": {
-                "type": "string"
-              },
               "published_at": {
                 "type": "string"
               },
@@ -824,7 +821,8 @@
                 "enum": [
                   "Cash",
                   "Doctor_Office",
-                  "Payu"
+                  "Payu",
+                  "Slope"
                 ]
               },
               "value": {
@@ -1030,13 +1028,16 @@
               "address": {
                 "type": "string"
               },
-              "medical_records_id": {
+              "medical_records_ids": {
                 "type": "array",
                 "items": {
                   "type": "string"
                 }
               },
               "consulting_room": {
+                "type": "string"
+              },
+              "illness": {
                 "type": "string"
               },
               "created_by": {
@@ -1223,13 +1224,16 @@
               "address": {
                 "type": "string"
               },
-              "medical_records_id": {
+              "medical_records_ids": {
                 "type": "array",
                 "items": {
                   "type": "string"
                 }
               },
               "consulting_room": {
+                "type": "string"
+              },
+              "illness": {
                 "type": "string"
               },
               "created_by": {

@@ -1,5 +1,6 @@
 {
     "conventionalCommits.scopes": [
-        "date-assign, medical-appointment, confirm-date, email-confirmation, search."
+        "date-assign, medical-appointment, confirm-date, email-confirmation, search.",
+        "general"
     ]
 }

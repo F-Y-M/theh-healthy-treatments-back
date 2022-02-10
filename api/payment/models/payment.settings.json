@@ -17,7 +17,8 @@
       "enum": [
         "Cash",
         "Doctor_Office",
-        "Payu"
+        "Payu",
+        "Slope"
       ]
     },
     "value": {

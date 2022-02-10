@@ -710,13 +710,16 @@
                 "address": {
                   "type": "string"
                 },
-                "medical_records_id": {
+                "medical_records_ids": {
                   "type": "array",
                   "items": {
                     "type": "string"
                   }
                 },
                 "consulting_room": {
+                  "type": "string"
+                },
+                "illness": {
                   "type": "string"
                 },
                 "created_by": {

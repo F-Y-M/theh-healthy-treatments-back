@@ -106,11 +106,11 @@
       "required": false
     },
     "phone_number": {
-      "type": "integer"
+      "type": "biginteger"
     },
     "cell_phone_number": {
       "required": false,
-      "type": "integer"
+      "type": "biginteger"
     },
     "sex": {
       "type": "enumeration",
@@ -205,11 +205,13 @@
     "address": {
       "type": "string"
     },
-    "medical_records_id": {
-      "via": "professional_id",
+    "medical_records_ids": {
       "collection": "medical-record"
     },
     "consulting_room": {
+      "type": "string"
+    },
+    "illness": {
       "type": "string"
     }
   }

@@ -73,11 +73,6 @@
       "plugin": "upload",
       "required": false,
       "pluginOptions": {}
-    },
-    "professional_id": {
-      "via": "medical_records_id",
-      "plugin": "users-permissions",
-      "model": "user"
     }
   }
 }

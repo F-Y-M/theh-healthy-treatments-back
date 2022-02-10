@@ -78,7 +78,7 @@ module.exports = {
       query = query + `spec.specialty like "${name}" `;
     }
     
-    if(name !== "" && city !== "") query = quey + "AND\n"
+    if(name !== "" && city !== "") query = query + "AND\n"
 
     if (city != "") {
       query = query + `users.city LIKE "%${city}%"  `;
