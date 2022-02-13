@@ -25,6 +25,14 @@
       }
     },
     {
+      "method": "GET",
+      "path": "/search-specialties",
+      "handler": "specialties-has-user.specialtyHasUsersSearch",
+      "config": {
+        "policies": []
+      }
+    },
+    {
       "method": "POST",
       "path": "/specialties-has-users",
       "handler": "specialties-has-user.create",

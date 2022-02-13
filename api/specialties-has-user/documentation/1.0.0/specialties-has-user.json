@@ -523,6 +523,63 @@
           }
         ]
       }
+    },
+    "/search-specialties": {
+      "get": {
+        "deprecated": false,
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "foo": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "summary": "",
+        "tags": [
+          "Specialties-has-user"
+        ],
+        "parameters": []
+      }
     }
   },
   "components": {
@@ -538,7 +595,7 @@
           "consultation_value": {
             "type": "number"
           },
-          "users_id": {
+          "professional_id": {
             "required": [
               "id",
               "username",
@@ -649,13 +706,6 @@
               "occupation": {
                 "type": "string"
               },
-              "accept_insurance": {
-                "type": "string",
-                "enum": [
-                  "YES",
-                  "NO"
-                ]
-              },
               "status": {
                 "type": "string",
                 "enum": [
@@ -670,12 +720,6 @@
                 }
               },
               "medical_appointments_professional_id": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
-              "specialties_has_users_id": {
                 "type": "array",
                 "items": {
                   "type": "string"
@@ -726,6 +770,18 @@
               "illness": {
                 "type": "string"
               },
+              "insurances_accepted": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "specialties_has_users_id": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
               "created_by": {
                 "type": "string"
               },
@@ -764,10 +820,6 @@
                 "type": "string"
               }
             }
-          },
-          "published_at": {
-            "type": "string",
-            "format": "date-time"
           }
         }
       },
@@ -776,15 +828,11 @@
           "consultation_value": {
             "type": "number"
           },
-          "users_id": {
+          "professional_id": {
             "type": "string"
           },
           "specialty_id": {
             "type": "string"
-          },
-          "published_at": {
-            "type": "string",
-            "format": "date-time"
           },
           "created_by": {
             "type": "string"

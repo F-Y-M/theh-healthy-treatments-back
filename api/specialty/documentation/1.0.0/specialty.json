@@ -605,13 +605,10 @@
                 "consultation_value": {
                   "type": "number"
                 },
-                "users_id": {
+                "professional_id": {
                   "type": "string"
                 },
                 "specialty_id": {
-                  "type": "string"
-                },
-                "published_at": {
                   "type": "string"
                 },
                 "created_by": {

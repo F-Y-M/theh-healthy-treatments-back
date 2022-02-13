@@ -2,19 +2,20 @@
   "kind": "collectionType",
   "collectionName": "specialties_has_users",
   "info": {
-    "name": "specialties_has_user"
+    "name": "specialties_has_user",
+    "description": ""
   },
   "options": {
     "increments": true,
     "timestamps": true,
-    "draftAndPublish": true
+    "draftAndPublish": false
   },
   "pluginOptions": {},
   "attributes": {
     "consultation_value": {
       "type": "decimal"
     },
-    "users_id": {
+    "professional_id": {
       "via": "specialties_has_users_id",
       "plugin": "users-permissions",
       "model": "user"

@@ -1391,13 +1391,6 @@
           "occupation": {
             "type": "string"
           },
-          "accept_insurance": {
-            "type": "string",
-            "enum": [
-              "YES",
-              "NO"
-            ]
-          },
           "status": {
             "type": "string",
             "enum": [
@@ -1524,37 +1517,6 @@
                   "type": "string"
                 },
                 "comment_id": {
-                  "type": "string"
-                },
-                "created_by": {
-                  "type": "string"
-                },
-                "updated_by": {
-                  "type": "string"
-                }
-              }
-            }
-          },
-          "specialties_has_users_id": {
-            "type": "array",
-            "items": {
-              "required": [
-                "id"
-              ],
-              "properties": {
-                "id": {
-                  "type": "string"
-                },
-                "consultation_value": {
-                  "type": "number"
-                },
-                "users_id": {
-                  "type": "string"
-                },
-                "specialty_id": {
-                  "type": "string"
-                },
-                "published_at": {
                   "type": "string"
                 },
                 "created_by": {
@@ -1835,6 +1797,78 @@
           },
           "illness": {
             "type": "string"
+          },
+          "insurances_accepted": {
+            "type": "array",
+            "items": {
+              "required": [
+                "id"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "name": {
+                  "type": "string"
+                },
+                "status": {
+                  "type": "string",
+                  "enum": [
+                    "ACTIVE",
+                    "INACTIVE"
+                  ]
+                },
+                "users_ids": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "insurance_has_users_id": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "published_at": {
+                  "type": "string"
+                },
+                "created_by": {
+                  "type": "string"
+                },
+                "updated_by": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "specialties_has_users_id": {
+            "type": "array",
+            "items": {
+              "required": [
+                "id"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "consultation_value": {
+                  "type": "number"
+                },
+                "professional_id": {
+                  "type": "string"
+                },
+                "specialty_id": {
+                  "type": "string"
+                },
+                "created_by": {
+                  "type": "string"
+                },
+                "updated_by": {
+                  "type": "string"
+                }
+              }
+            }
           }
         }
       },
@@ -1950,13 +1984,6 @@
           "occupation": {
             "type": "string"
           },
-          "accept_insurance": {
-            "type": "string",
-            "enum": [
-              "YES",
-              "NO"
-            ]
-          },
           "status": {
             "type": "string",
             "enum": [
@@ -1971,12 +1998,6 @@
             }
           },
           "medical_appointments_professional_id": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          },
-          "specialties_has_users_id": {
             "type": "array",
             "items": {
               "type": "string"
@@ -2026,6 +2047,18 @@
           },
           "illness": {
             "type": "string"
+          },
+          "insurances_accepted": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "specialties_has_users_id": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
           },
           "created_by": {
             "type": "string"
