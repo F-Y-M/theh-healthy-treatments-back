@@ -111,6 +111,11 @@ module.exports = {
 
   async medicalRecordShortSearch(ctx) {
     const { patient_id } = ctx.request.query;
+    const { professional_id } = ctx.request.query;
+
+    let queryPart = professional_id 
+    ? `WHERE ma.professional_id = ${professional_id}\n`
+    : `WHERE ma.patient_id = ${patient_id}\n`
     const query =
       `SELECT 
         mr.id as medical_record_id,
@@ -126,9 +131,10 @@ module.exports = {
       LEFT JOIN medical_records as mr on mr.id = medical_record_id\n` +
       "LEFT JOIN `users-permissions_user` as professional on ma.professional_id = professional.id \n" +
       `LEFT join specialties_has_users specUser on specUser.users_id = professional.id
-      LEFT join specialties spec on spec.id = specUser.specialty_id
-      WHERE patient_id = ${patient_id}
-      GROUP BY ma.medical_record_id;`;
+      LEFT join specialties spec on spec.id = specUser.specialty_id\n` +
+      queryPart +
+      `GROUP BY ma.medical_record_id;`;
+
     const result = await strapi.connections.default.raw(query);
     return result[0];
   },

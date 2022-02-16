@@ -977,6 +977,9 @@
               "comment_id": {
                 "type": "string"
               },
+              "specialty": {
+                "type": "string"
+              },
               "created_by": {
                 "type": "string"
               },

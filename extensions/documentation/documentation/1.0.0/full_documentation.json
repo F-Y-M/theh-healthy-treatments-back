@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "02/11/2022 9:11:57 PM"
+    "x-generation-date": "02/14/2022 6:48:03 PM"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -10822,6 +10822,9 @@
               "comment_id": {
                 "type": "string"
               },
+              "specialty": {
+                "type": "string"
+              },
               "created_by": {
                 "type": "string"
               },
@@ -11771,6 +11774,9 @@
                   "type": "string"
                 }
               },
+              "patient_photo": {
+                "type": "string"
+              },
               "published_at": {
                 "type": "string"
               },
@@ -12261,6 +12267,9 @@
                 "type": "string"
               }
             }
+          },
+          "specialty": {
+            "type": "string"
           }
         }
       },
@@ -12316,6 +12325,9 @@
             "type": "string"
           },
           "comment_id": {
+            "type": "string"
+          },
+          "specialty": {
             "type": "string"
           },
           "created_by": {
@@ -12391,6 +12403,9 @@
                   "type": "string"
                 },
                 "comment_id": {
+                  "type": "string"
+                },
+                "specialty": {
                   "type": "string"
                 },
                 "created_by": {
@@ -12592,6 +12607,73 @@
               }
             }
           },
+          "patient_photo": {
+            "required": [
+              "id",
+              "name",
+              "hash",
+              "mime",
+              "size",
+              "url",
+              "provider"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "alternativeText": {
+                "type": "string"
+              },
+              "caption": {
+                "type": "string"
+              },
+              "width": {
+                "type": "integer"
+              },
+              "height": {
+                "type": "integer"
+              },
+              "formats": {
+                "type": "object"
+              },
+              "hash": {
+                "type": "string"
+              },
+              "ext": {
+                "type": "string"
+              },
+              "mime": {
+                "type": "string"
+              },
+              "size": {
+                "type": "number"
+              },
+              "url": {
+                "type": "string"
+              },
+              "previewUrl": {
+                "type": "string"
+              },
+              "provider": {
+                "type": "string"
+              },
+              "provider_metadata": {
+                "type": "object"
+              },
+              "related": {
+                "type": "string"
+              },
+              "created_by": {
+                "type": "string"
+              },
+              "updated_by": {
+                "type": "string"
+              }
+            }
+          },
           "published_at": {
             "type": "string",
             "format": "date-time"
@@ -12742,6 +12824,9 @@
                 "type": "string"
               },
               "comment_id": {
+                "type": "string"
+              },
+              "specialty": {
                 "type": "string"
               },
               "created_by": {
@@ -13984,6 +14069,9 @@
                 "comment_id": {
                   "type": "string"
                 },
+                "specialty": {
+                  "type": "string"
+                },
                 "created_by": {
                   "type": "string"
                 },
@@ -14047,6 +14135,9 @@
                   "type": "string"
                 },
                 "comment_id": {
+                  "type": "string"
+                },
+                "specialty": {
                   "type": "string"
                 },
                 "created_by": {
@@ -14309,6 +14400,9 @@
                   "items": {
                     "type": "string"
                   }
+                },
+                "patient_photo": {
+                  "type": "string"
                 },
                 "published_at": {
                   "type": "string"

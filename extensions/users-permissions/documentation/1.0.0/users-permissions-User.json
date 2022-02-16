@@ -1454,6 +1454,9 @@
                 "comment_id": {
                   "type": "string"
                 },
+                "specialty": {
+                  "type": "string"
+                },
                 "created_by": {
                   "type": "string"
                 },
@@ -1517,6 +1520,9 @@
                   "type": "string"
                 },
                 "comment_id": {
+                  "type": "string"
+                },
+                "specialty": {
                   "type": "string"
                 },
                 "created_by": {
@@ -1779,6 +1785,9 @@
                   "items": {
                     "type": "string"
                   }
+                },
+                "patient_photo": {
+                  "type": "string"
                 },
                 "published_at": {
                   "type": "string"
