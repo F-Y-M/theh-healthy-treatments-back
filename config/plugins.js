@@ -13,8 +13,9 @@ module.exports = ({ env }) => ({
   // ...
   email: {
     config: {
-      provider: 'nodemailer',
+      provider: 'sendgrid',
       providerOptions: {
+        apiKey: env('SENDGRID_API_KEY', ''),
         host: env('SMTP_HOST', 'smtp.example.com'),
         port: env('SMTP_PORT', 587),
         auth: {

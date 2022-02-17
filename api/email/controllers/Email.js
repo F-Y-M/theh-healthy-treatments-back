@@ -16,13 +16,13 @@ module.exports = {
         // const body = request.body
         const sendTo = request.email
         const code = request.code
-        strapi.log.debug(`Trying to send an email to ${code}`)
+        strapi.log.debug(`Trying to send an email to ${sendTo}`)
 
         try {
             const emailOptions = {
                 to: sendTo,
                 subject: 'This is a test',
-                /* html: `
+                html: `
                     <div class="es-wrapper-color">
                         <!--[if gte mso 9]>
                             <v:background xmlns:v="urn:schemas-microsoft-com:vml" fill="t">
@@ -342,13 +342,13 @@ module.exports = {
                             </tbody>
                         </table>
                     </div>`,
-                */
-               html: `
-                <div>
-                    <p>Escribe este codigo para confirmar la cita medica</p>
-                    <p>${code}</p>
-                </div>
-               `
+
+            //    html: `
+            //     <div>
+            //         <p>Escribe este codigo para confirmar la cita medica</p>
+            //         <p>${code}</p>
+            //     </div>
+            //    `
             }
             await strapi.plugins['email'].services.email.send(emailOptions)
             strapi.log.debug(`Email sent to ${sendTo}`)

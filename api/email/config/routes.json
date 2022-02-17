@@ -5,6 +5,12 @@
         "path": "/resend-code",
         "handler": "Email.send",
         "config": {}
+      },
+      {
+        "method": "POST",
+        "path": "/send-text",
+        "handler": "Email.send",
+        "config": {}
       }
     ]
   }

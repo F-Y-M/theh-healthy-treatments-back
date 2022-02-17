@@ -5,6 +5,8 @@
  * to customize this controller
  */
 
+const emailTemplate = require('../../../templates/emailTemplate')
+
 module.exports = {
   assignDate: async (ctx) => {
     let body = ctx.request.body;
@@ -35,13 +37,12 @@ module.exports = {
 
     const emailOptions = {
       to: email,
-      subject: "This is a test",
-      html: `
-            <div>
-                <p>Escribe este codigo para confirmar la cita medica</p>
-                <p>${code}</p>
-            </div>
-           `,
+      subject: "Codigo de confirmación de cita medica",
+      html: emailTemplate(
+        "CODIGO DE VERIFICACIÓN DE CITA",
+        "Para poder agendar una cita debes ingresar el codigo de verificación.",
+        code  
+      ),
     };
     await strapi.plugins["email"].services.email.send(emailOptions);
 
