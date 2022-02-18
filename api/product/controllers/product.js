@@ -53,6 +53,20 @@ module.exports = {
   },
   async search(ctx) {
     let { name, city, date, insurance } = ctx.request.query;
+
+    let nuevo = date.split("-")
+
+    if(nuevo[1] === "12"){
+        nuevo[1] = "03"
+    }
+    else if(nuevo[1] === "11"){
+        nuevo[1] = "02"
+    }
+    else if(nuevo[1] === "10"){
+        nuevo[1] = "01"
+    }
+
+    let newDate = nuevo.toString().replace(/,/g,"-")
     let query =
       "SELECT concat('Dr ',users.first_name, ', ', users.surname) as 'professionalFullName',\n" +
       "users.first_name as 'first_name',\n" +
@@ -69,13 +83,16 @@ module.exports = {
       "relatedFile.related_type = 'users-permissions_user' AND\n" +
       "relatedFile.related_id = users.id\n" +
       "LEFT JOIN upload_file files on files.id = relatedFile.upload_file_id\n" +
-      "LEFT join comments on comments.professional_id = users.id AND users.role = 5\n" +
+      "LEFT join comments on comments.professional_id = users.id AND users.role = 1\n" +
       "LEFT join specialties_has_users specUser on specUser.users_id = users.id\n" +
       "LEFT join specialties spec on spec.id = specUser.specialty_id\n" +
       "LEFT join availability_hours avaHour on avaHour.users_id = users.id\n" +
-      "WHERE ";
+      "WHERE users.role = 1 ";
     if (name != "") {
-      query = query + `spec.specialty like "${name}" `;
+      query = query + `AND \nspec.specialty like "${name}" `;
+    }
+    else{
+      query = query + "AND \n"
     }
     
     if(name !== "" && city !== "") query = query + "AND\n"
@@ -83,7 +100,9 @@ module.exports = {
     if (city != "") {
       query = query + `users.city LIKE "%${city}%"  `;
     }
-    query = query + ` GROUP BY users.id, avaHour.date`;
+
+    query = query + `AND \navaHour.date BETWEEN '${date} 00:00' AND '${newDate} 23:00'
+     GROUP BY users.id, avaHour.date`;
 
 
     const result = await strapi.connections.default.raw(query);

@@ -3,6 +3,7 @@
         "date-assign, medical-appointment, confirm-date, email-confirmation, search.",
         "general",
         "medical-appoinment",
-        "email"
+        "email",
+        "searchbar"
     ]
 }
