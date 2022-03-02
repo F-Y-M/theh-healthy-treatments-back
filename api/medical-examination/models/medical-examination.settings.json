@@ -22,6 +22,10 @@
     "exam_categories_id": {
       "via": "medical_examination_ids",
       "model": "exam-category"
+    },
+    "users_has_medical_examination_id": {
+      "via": "medical_examination_ids",
+      "model": "users-has-medical-examinations"
     }
   }
 }

@@ -9,6 +9,14 @@
       }
     },
     {
+      "method": "POST",
+      "path": "/medical-and-record",
+      "handler": "medical-appointment.appointmentAndRecord",
+      "config": {
+        "policies": []
+      }
+    },
+    {
       "method": "GET",
       "path": "/medical-appointments/count",
       "handler": "medical-appointment.count",

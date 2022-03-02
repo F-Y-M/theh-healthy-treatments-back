@@ -560,6 +560,9 @@
                 "exam_categories_id": {
                   "type": "string"
                 },
+                "users_has_medical_examination_id": {
+                  "type": "string"
+                },
                 "published_at": {
                   "type": "string"
                 },

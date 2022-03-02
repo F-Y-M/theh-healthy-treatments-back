@@ -1,12 +1,12 @@
 {
   "paths": {
-    "/medical-examinations": {
+    "/users-has-medical-examinations": {
       "get": {
         "deprecated": false,
-        "description": "",
+        "description": "Find all the users-has-medical-examinations's records",
         "responses": {
           "200": {
-            "description": "response",
+            "description": "Retrieve users-has-medical-examinations document(s)",
             "content": {
               "application/json": {
                 "schema": {
@@ -52,7 +52,7 @@
         },
         "summary": "",
         "tags": [
-          "Medical-examination"
+          "Users-has-medical-examinations"
         ],
         "parameters": [
           {
@@ -195,10 +195,10 @@
       },
       "post": {
         "deprecated": false,
-        "description": "Create a new record",
+        "description": "Create a new users-has-medical-examinations record",
         "responses": {
           "200": {
-            "description": "response",
+            "description": "Retrieve users-has-medical-examinations document(s)",
             "content": {
               "application/json": {
                 "schema": {
@@ -244,7 +244,7 @@
         },
         "summary": "",
         "tags": [
-          "Medical-examination"
+          "Users-has-medical-examinations"
         ],
         "requestBody": {
           "description": "",
@@ -252,20 +252,20 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewMedical-examination"
+                "$ref": "#/components/schemas/NewUsers-has-medical-examinations"
               }
             }
           }
         }
       }
     },
-    "/medical-examinations/count": {
+    "/users-has-medical-examinations/count": {
       "get": {
         "deprecated": false,
-        "description": "",
+        "description": "Retrieve the numver of users-has-medical-examinations documents",
         "responses": {
           "200": {
-            "description": "response",
+            "description": "Retrieve users-has-medical-examinations document(s)",
             "content": {
               "application/json": {
                 "schema": {
@@ -311,18 +311,18 @@
         },
         "summary": "",
         "tags": [
-          "Medical-examination"
+          "Users-has-medical-examinations"
         ],
         "parameters": []
       }
     },
-    "/medical-examinations/{id}": {
+    "/users-has-medical-examinations/{id}": {
       "get": {
         "deprecated": false,
-        "description": "",
+        "description": "Find one users-has-medical-examinations record",
         "responses": {
           "200": {
-            "description": "response",
+            "description": "Retrieve users-has-medical-examinations document(s)",
             "content": {
               "application/json": {
                 "schema": {
@@ -368,7 +368,7 @@
         },
         "summary": "",
         "tags": [
-          "Medical-examination"
+          "Users-has-medical-examinations"
         ],
         "parameters": [
           {
@@ -385,10 +385,10 @@
       },
       "put": {
         "deprecated": false,
-        "description": "Update a record",
+        "description": "Update a single users-has-medical-examinations record",
         "responses": {
           "200": {
-            "description": "response",
+            "description": "Retrieve users-has-medical-examinations document(s)",
             "content": {
               "application/json": {
                 "schema": {
@@ -434,7 +434,7 @@
         },
         "summary": "",
         "tags": [
-          "Medical-examination"
+          "Users-has-medical-examinations"
         ],
         "requestBody": {
           "description": "",
@@ -442,7 +442,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewMedical-examination"
+                "$ref": "#/components/schemas/NewUsers-has-medical-examinations"
               }
             }
           }
@@ -462,10 +462,10 @@
       },
       "delete": {
         "deprecated": false,
-        "description": "Delete a record",
+        "description": "Delete a single users-has-medical-examinations record",
         "responses": {
           "200": {
-            "description": "deletes a single record based on the ID supplied",
+            "description": "deletes a single users-has-medical-examinations based on the ID supplied",
             "content": {
               "application/json": {
                 "schema": {
@@ -508,7 +508,7 @@
         },
         "summary": "",
         "tags": [
-          "Medical-examination"
+          "Users-has-medical-examinations"
         ],
         "parameters": [
           {
@@ -527,7 +527,7 @@
   },
   "components": {
     "schemas": {
-      "Medical-examination": {
+      "Users-has-medical-examinations": {
         "required": [
           "id"
         ],
@@ -535,66 +535,202 @@
           "id": {
             "type": "string"
           },
-          "name": {
-            "type": "string"
-          },
-          "medical_appointments_id": {
+          "patient_id": {
             "type": "array",
             "items": {
               "required": [
                 "id",
-                "code"
+                "username",
+                "email",
+                "first_name",
+                "surname"
               ],
               "properties": {
                 "id": {
                   "type": "string"
                 },
-                "date": {
+                "username": {
                   "type": "string"
                 },
-                "current_appointment_time": {
+                "email": {
+                  "type": "string"
+                },
+                "provider": {
+                  "type": "string"
+                },
+                "password": {
+                  "type": "string"
+                },
+                "resetPasswordToken": {
+                  "type": "string"
+                },
+                "confirmationToken": {
+                  "type": "string"
+                },
+                "confirmed": {
+                  "type": "boolean"
+                },
+                "blocked": {
+                  "type": "boolean"
+                },
+                "role": {
+                  "type": "string"
+                },
+                "first_name": {
+                  "type": "string"
+                },
+                "second_name": {
+                  "type": "string"
+                },
+                "surname": {
+                  "type": "string"
+                },
+                "second_surname": {
+                  "type": "string"
+                },
+                "identification_type": {
+                  "type": "string",
+                  "enum": [
+                    "CC",
+                    "ID",
+                    "PA",
+                    "DNI"
+                  ]
+                },
+                "identification_document": {
+                  "type": "string"
+                },
+                "email_verified_at": {
+                  "type": "string"
+                },
+                "photo": {
+                  "type": "string"
+                },
+                "birthday": {
+                  "type": "string"
+                },
+                "phone_number": {
+                  "type": "integer"
+                },
+                "cell_phone_number": {
+                  "type": "integer"
+                },
+                "sex": {
+                  "type": "string",
+                  "enum": [
+                    "M",
+                    "F",
+                    "O"
+                  ]
+                },
+                "weight": {
+                  "type": "integer"
+                },
+                "height": {
+                  "type": "number"
+                },
+                "blood_type": {
+                  "type": "string",
+                  "enum": [
+                    "A",
+                    "B",
+                    "AB",
+                    "O"
+                  ]
+                },
+                "rh": {
+                  "type": "string",
+                  "enum": [
+                    "POSITIVE",
+                    "NEGATIVE"
+                  ]
+                },
+                "occupation": {
                   "type": "string"
                 },
                 "status": {
                   "type": "string",
                   "enum": [
-                    "Slope",
-                    "Confirmed",
-                    "In_progress",
-                    "Finished",
-                    "Not_attended_by_the_patient",
-                    "Not_attended_by_the_doctor",
-                    "Not_attended_by_the_laboratory"
+                    "ACTIVE",
+                    "INACTIVE"
                   ]
                 },
-                "medical_examination_id": {
+                "medical_appointments_id": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "medical_appointments_professional_id": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "city": {
                   "type": "string"
                 },
-                "medical_record_id": {
+                "availability_hours_id": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "comments_id": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "comments_professional_id": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "insurance_id": {
                   "type": "string"
                 },
-                "payment_id": {
+                "insurance_has_user_id": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "address": {
                   "type": "string"
                 },
-                "patient_id": {
+                "medical_records_ids": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "consulting_room": {
                   "type": "string"
                 },
-                "professional_id": {
+                "illness": {
                   "type": "string"
                 },
-                "reason_for_consultation": {
+                "insurances_accepted": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "specialties_has_users_id": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "digital_firm": {
                   "type": "string"
                 },
-                "code": {
+                "professional_certificate": {
                   "type": "string"
                 },
-                "consultation_type": {
-                  "type": "string"
-                },
-                "comment_id": {
-                  "type": "string"
-                },
-                "specialty": {
+                "users_has_medical_examination_id": {
                   "type": "string"
                 },
                 "created_by": {
@@ -606,91 +742,64 @@
               }
             }
           },
-          "exam_categories_id": {
-            "required": [
-              "id"
-            ],
-            "properties": {
-              "id": {
-                "type": "string"
-              },
-              "name": {
-                "type": "string"
-              },
-              "medical_examination_ids": {
-                "type": "array",
-                "items": {
+          "medical_examination_ids": {
+            "type": "array",
+            "items": {
+              "required": [
+                "id"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "name": {
+                  "type": "string"
+                },
+                "medical_appointments_id": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "exam_categories_id": {
+                  "type": "string"
+                },
+                "users_has_medical_examination_id": {
+                  "type": "string"
+                },
+                "published_at": {
+                  "type": "string"
+                },
+                "created_by": {
+                  "type": "string"
+                },
+                "updated_by": {
                   "type": "string"
                 }
-              },
-              "published_at": {
-                "type": "string"
-              },
-              "created_by": {
-                "type": "string"
-              },
-              "updated_by": {
-                "type": "string"
               }
             }
           },
-          "users_has_medical_examination_id": {
-            "required": [
-              "id"
-            ],
-            "properties": {
-              "id": {
-                "type": "string"
-              },
-              "patient_id": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
-              "medical_examination_ids": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
-              "exam_value": {
-                "type": "number"
-              },
-              "created_by": {
-                "type": "string"
-              },
-              "updated_by": {
-                "type": "string"
-              }
-            }
-          },
-          "published_at": {
-            "type": "string",
-            "format": "date-time"
+          "exam_value": {
+            "type": "number"
           }
         }
       },
-      "NewMedical-examination": {
+      "NewUsers-has-medical-examinations": {
         "properties": {
-          "name": {
-            "type": "string"
-          },
-          "medical_appointments_id": {
+          "patient_id": {
             "type": "array",
             "items": {
               "type": "string"
             }
           },
-          "exam_categories_id": {
-            "type": "string"
+          "medical_examination_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
           },
-          "users_has_medical_examination_id": {
-            "type": "string"
-          },
-          "published_at": {
-            "type": "string",
-            "format": "date-time"
+          "exam_value": {
+            "type": "number"
           },
           "created_by": {
             "type": "string"

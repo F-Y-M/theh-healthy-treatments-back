@@ -9,6 +9,30 @@
       }
     },
     {
+      "method": "POST",
+      "path": "/medical-record-profesional-search",
+      "handler": "medical-record.searchRecordAndUser",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/medical-record-patient-search",
+      "handler": "medical-record.searchRecordAndProfessional",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/medical-record-search-for-professional",
+      "handler": "medical-record.searchRecordForProfessional",
+      "config": {
+        "policies": []
+      }
+    },
+    {
       "method": "GET",
       "path": "/medical-records/count",
       "handler": "medical-record.count",

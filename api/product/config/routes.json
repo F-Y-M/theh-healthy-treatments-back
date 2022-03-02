@@ -26,12 +26,21 @@
     },
     {
       "method": "GET",
+      "path": "/medical-record-short-search-notifications",
+      "handler": "product.medicalRecordShortSearchNotifications",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
       "path": "/medical-record-short-search",
       "handler": "product.medicalRecordShortSearch",
       "config": {
         "policies": []
       }
     },
+
     {
       "method": "GET",
       "path": "/medical-record-search",

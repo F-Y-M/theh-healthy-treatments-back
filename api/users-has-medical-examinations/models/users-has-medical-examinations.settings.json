@@ -1,0 +1,28 @@
+{
+  "kind": "collectionType",
+  "collectionName": "users_has_medical_examinations",
+  "info": {
+    "name": "users_has_medical_examinations",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "patient_id": {
+      "plugin": "users-permissions",
+      "collection": "user",
+      "via": "users_has_medical_examination_id"
+    },
+    "medical_examination_ids": {
+      "collection": "medical-examination",
+      "via": "users_has_medical_examination_id"
+    },
+    "exam_value": {
+      "type": "decimal"
+    }
+  }
+}

@@ -716,6 +716,15 @@
                   "type": "string"
                 }
               },
+              "digital_firm": {
+                "type": "string"
+              },
+              "professional_certificate": {
+                "type": "string"
+              },
+              "users_has_medical_examination_id": {
+                "type": "string"
+              },
               "created_by": {
                 "type": "string"
               },
@@ -910,6 +919,15 @@
                 "items": {
                   "type": "string"
                 }
+              },
+              "digital_firm": {
+                "type": "string"
+              },
+              "professional_certificate": {
+                "type": "string"
+              },
+              "users_has_medical_examination_id": {
+                "type": "string"
               },
               "created_by": {
                 "type": "string"

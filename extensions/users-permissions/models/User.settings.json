@@ -208,6 +208,23 @@
     "specialties_has_users_id": {
       "via": "professional_id",
       "collection": "specialties-has-user"
+    },
+    "digital_firm": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images"
+      ],
+      "plugin": "upload",
+      "required": false,
+      "pluginOptions": {}
+    },
+    "professional_certificate": {
+      "type": "string"
+    },
+    "users_has_medical_examination_id": {
+      "via": "patient_id",
+      "model": "users-has-medical-examinations"
     }
   }
 }

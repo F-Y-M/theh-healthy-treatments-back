@@ -259,6 +259,77 @@
         }
       }
     },
+    "/medical-and-record": {
+      "post": {
+        "deprecated": false,
+        "description": "Create a new record",
+        "responses": {
+          "200": {
+            "description": "response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "foo": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "summary": "",
+        "tags": [
+          "Medical-appointment"
+        ],
+        "requestBody": {
+          "description": "",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "foo": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/medical-appointments/count": {
       "get": {
         "deprecated": false,
@@ -719,6 +790,9 @@
               "exam_categories_id": {
                 "type": "string"
               },
+              "users_has_medical_examination_id": {
+                "type": "string"
+              },
               "published_at": {
                 "type": "string"
               },
@@ -1042,6 +1116,15 @@
                   "type": "string"
                 }
               },
+              "digital_firm": {
+                "type": "string"
+              },
+              "professional_certificate": {
+                "type": "string"
+              },
+              "users_has_medical_examination_id": {
+                "type": "string"
+              },
               "created_by": {
                 "type": "string"
               },
@@ -1236,6 +1319,15 @@
                 "items": {
                   "type": "string"
                 }
+              },
+              "digital_firm": {
+                "type": "string"
+              },
+              "professional_certificate": {
+                "type": "string"
+              },
+              "users_has_medical_examination_id": {
+                "type": "string"
               },
               "created_by": {
                 "type": "string"

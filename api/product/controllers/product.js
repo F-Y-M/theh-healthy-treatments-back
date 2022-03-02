@@ -65,6 +65,12 @@ module.exports = {
     else if(nuevo[1] === "10"){
         nuevo[1] = "01"
     }
+    else{
+      let part = parseInt(nuevo[1]) + 3
+      nuevo[1] = '0' + part
+    }
+
+    console.log("NUEVA FECHA: ", nuevo)
 
     let newDate = nuevo.toString().replace(/,/g,"-")
     let query =
@@ -101,10 +107,10 @@ module.exports = {
       query = query + `users.city LIKE "%${city}%"  `;
     }
 
-    query = query + `AND \navaHour.date BETWEEN '${date} 00:00' AND '${newDate} 23:00'
+    query = query + `AND \navaHour.date BETWEEN '${date}' AND '${newDate}'
      GROUP BY users.id, avaHour.date`;
 
-
+    console.log("PETICIOJ: ", query)
     const result = await strapi.connections.default.raw(query);
     let before;
     let array = [];
@@ -147,12 +153,43 @@ module.exports = {
         professional.address as address
 
       FROM medical_appointments ma
-      LEFT JOIN medical_records as mr on mr.id = medical_record_id\n` +
+      LEFT JOIN medical_records as mr on mr.id = ma.medical_record_id\n` +
       "LEFT JOIN `users-permissions_user` as professional on ma.professional_id = professional.id \n" +
       `LEFT join specialties_has_users specUser on specUser.users_id = professional.id
       LEFT join specialties spec on spec.id = specUser.specialty_id\n` +
-      queryPart +
-      `GROUP BY ma.medical_record_id;`;
+      queryPart
+    
+    console.log(query)
+
+    const result = await strapi.connections.default.raw(query);
+    return result[0];
+  },
+
+
+  async medicalRecordShortSearchNotifications(ctx) {
+    const { patient_id } = ctx.request.query;
+    const { professional_id } = ctx.request.query;
+
+    let queryPart = professional_id 
+    ? `WHERE ma.professional_id = ${professional_id}\n`
+    : `WHERE ma.patient_id = ${patient_id}\n`
+    const query =
+      `SELECT 
+        ma.reason_for_consultation as reason,
+        ma.date as date,
+        ma.status as status,
+        concat('Dr ',professional.first_name, ', ', professional.surname) as professionalFullName,
+        spec.specialty as specialty,
+        specUser.consultation_value as consultationValue,
+        professional.address as address
+
+      FROM medical_appointments ma\n` +
+      "LEFT JOIN `users-permissions_user` as professional on ma.professional_id = professional.id \n" +
+      `LEFT join specialties_has_users specUser on specUser.users_id = professional.id
+      LEFT join specialties spec on spec.id = specUser.specialty_id\n` +
+      queryPart
+    
+    console.log(query)
 
     const result = await strapi.connections.default.raw(query);
     return result[0];
@@ -162,6 +199,7 @@ module.exports = {
     const { patient_id } = ctx.request.query;
     const query =
       `SELECT 
+        mr.id as medical_record_id,
         ma.id as medicalAppointmentId,
         ma.reason_for_consultation as reason,
         ma.status as status,
@@ -182,8 +220,7 @@ module.exports = {
       `LEFT JOIN specialties_has_users specUser on specUser.users_id = professional.id
       LEFT JOIN specialties spec on spec.id = specUser.specialty_id
       LEFT JOIN comments commentary on ma.comment_id = commentary.id \n` +
-      `WHERE ma.patient_id = ${patient_id}
-    GROUP BY ma.medical_record_id;`;
+      `WHERE ma.patient_id = ${patient_id}`;
     const result = await strapi.connections.default.raw(query);
     return result[0];
   },

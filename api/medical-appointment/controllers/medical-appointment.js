@@ -24,16 +24,17 @@ module.exports = {
       code += characters.charAt(Math.floor(Math.random() * characters.length));
     }
 
-    let queryMedicalAppointmet = `INSERT INTO medical_appointments (date, patient_id, professional_id, reason_for_consultation, code)
-    VALUES ('${date}', '${patient_id}', '${professional_id}', '${reason_for_consultation}', '${code}')`
+    let queryMedicalAppointmet = `INSERT INTO medical_appointments (date, status, patient_id, professional_id, reason_for_consultation, code)
+    VALUES ('${date}', 'Slope', '${patient_id}', '${professional_id}', '${reason_for_consultation}', '${code}')`
 
     let queryUser = "UPDATE `users-permissions_user` SET confirmed=1 " +
     `WHERE email = '${email}' AND id = ${patient_id}`
 
+    let queryPayment = ""
     const medical_appointment = await strapi.connections.default.raw(queryMedicalAppointmet);
     
     const user = await strapi.connections.default.raw(queryUser);
-    console.log("user: ", user);
+    console.log("medical_appointment: ", medical_appointment);
 
     const emailOptions = {
       to: email,
@@ -64,4 +65,30 @@ module.exports = {
       return { redirect: false };
     }
   },
+
+  appointmentAndRecord: async (ctx) => {
+    let body = ctx.request.body;
+        console.log("esto es body: ", body);
+        let patientId = body.patient_id;
+
+        let query = `
+        SELECT
+          ma.*,
+          professional.first_name,
+          professional.second_name,
+          professional.surname,
+          professional.second_surname,
+          professional.address,
+          professional.consulting_room\n` +
+            
+        "FROM `users-permissions_user` as professional\n" +
+        `LEFT JOIN medical_appointments as ma on ma.professional_id = professional.id 
+        LEFT JOIN	medical_records as mr on ma.medical_record_id = mr.id
+        WHERE ma.patient_id = ${patientId} AND professional.role = 5
+        `
+
+        const appointmentAndRecordQuery = await strapi.connections.default.raw(query);
+
+        return appointmentAndRecordQuery[0];
+  }
 };
