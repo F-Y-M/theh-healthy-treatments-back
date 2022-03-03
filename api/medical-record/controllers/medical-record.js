@@ -75,13 +75,14 @@ module.exports = {
         SELECT
             mr.*,
             professional.professional_certificate,
-            professional.first_name,
+            patient.first_name,
             ma.specialty,
             ma.date,
             files.url as photo\n` +
         "FROM `users-permissions_user` as professional\n" +
-        `LEFT JOIN medical_appointments as ma on ma.professional_id = professional.id 
-        LEFT JOIN	medical_records as mr on ma.medical_record_id = mr.id
+        `LEFT JOIN medical_appointments as ma on ma.professional_id = professional.id\n` +
+        "LEFT JOIN `users-permissions_user` as patient on ma.patient_id = patient.id\n" + 
+        `LEFT JOIN medical_records as mr on ma.medical_record_id = mr.id
         LEFT JOIN upload_file_morph as relatedFile on
             relatedFile.related_type = 'users-permissions_user' AND
             relatedFile.related_id = professional.id AND
