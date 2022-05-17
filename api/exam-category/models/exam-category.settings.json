@@ -8,7 +8,7 @@
   "options": {
     "increments": true,
     "timestamps": true,
-    "draftAndPublish": true
+    "draftAndPublish": false
   },
   "pluginOptions": {},
   "attributes": {
@@ -16,8 +16,8 @@
       "type": "string"
     },
     "medical_examination_ids": {
-      "collection": "medical-examination",
-      "via": "exam_categories_id"
+      "via": "exam_categories_id",
+      "collection": "medical-examination"
     }
   }
 }

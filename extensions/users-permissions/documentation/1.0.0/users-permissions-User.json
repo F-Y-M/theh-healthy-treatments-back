@@ -1723,10 +1723,6 @@
             "items": {
               "required": [
                 "id",
-                "current_illness_patient",
-                "history_of_current_illness_patient",
-                "personal_history_patient",
-                "additional_comments_patient",
                 "current_illness",
                 "systems_review",
                 "background",
@@ -1949,36 +1945,36 @@
           "professional_certificate": {
             "type": "string"
           },
-          "users_has_medical_examination_id": {
-            "required": [
-              "id"
-            ],
-            "properties": {
-              "id": {
-                "type": "string"
-              },
-              "patient_id": {
-                "type": "array",
-                "items": {
+          "users_has_examination_ids": {
+            "type": "array",
+            "items": {
+              "required": [
+                "id"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "user_id": {
+                  "type": "string"
+                },
+                "medical_examination_id": {
+                  "type": "string"
+                },
+                "exam_value": {
+                  "type": "number"
+                },
+                "created_by": {
+                  "type": "string"
+                },
+                "updated_by": {
                   "type": "string"
                 }
-              },
-              "medical_examination_ids": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
-              "exam_value": {
-                "type": "number"
-              },
-              "created_by": {
-                "type": "string"
-              },
-              "updated_by": {
-                "type": "string"
               }
             }
+          },
+          "calendar": {
+            "type": "object"
           }
         }
       },
@@ -2173,8 +2169,14 @@
           "professional_certificate": {
             "type": "string"
           },
-          "users_has_medical_examination_id": {
-            "type": "string"
+          "users_has_examination_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "calendar": {
+            "type": "object"
           },
           "created_by": {
             "type": "string"

@@ -222,9 +222,12 @@
     "professional_certificate": {
       "type": "string"
     },
-    "users_has_medical_examination_id": {
-      "via": "patient_id",
-      "model": "users-has-medical-examinations"
+    "users_has_examination_ids": {
+      "via": "user_id",
+      "collection": "users-has-examinations"
+    },
+    "calendar": {
+      "type": "json"
     }
   }
 }

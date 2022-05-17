@@ -722,8 +722,14 @@
               "professional_certificate": {
                 "type": "string"
               },
-              "users_has_medical_examination_id": {
-                "type": "string"
+              "users_has_examination_ids": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "calendar": {
+                "type": "object"
               },
               "created_by": {
                 "type": "string"
@@ -926,8 +932,14 @@
               "professional_certificate": {
                 "type": "string"
               },
-              "users_has_medical_examination_id": {
-                "type": "string"
+              "users_has_examination_ids": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "calendar": {
+                "type": "object"
               },
               "created_by": {
                 "type": "string"

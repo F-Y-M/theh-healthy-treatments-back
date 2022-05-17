@@ -743,10 +743,6 @@
       "Medical-record": {
         "required": [
           "id",
-          "current_illness_patient",
-          "history_of_current_illness_patient",
-          "personal_history_patient",
-          "additional_comments_patient",
           "current_illness",
           "systems_review",
           "background",
@@ -945,10 +941,6 @@
       },
       "NewMedical-record": {
         "required": [
-          "current_illness_patient",
-          "history_of_current_illness_patient",
-          "personal_history_patient",
-          "additional_comments_patient",
           "current_illness",
           "systems_review",
           "background",

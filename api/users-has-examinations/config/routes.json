@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/users-has-examinations",
+      "handler": "users-has-examinations.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/users-has-examinations/count",
+      "handler": "users-has-examinations.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/users-has-examinations/:id",
+      "handler": "users-has-examinations.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/users-has-examinations",
+      "handler": "users-has-examinations.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/users-has-examinations/:id",
+      "handler": "users-has-examinations.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/users-has-examinations/:id",
+      "handler": "users-has-examinations.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

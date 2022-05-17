@@ -46,9 +46,12 @@ module.exports = {
 
         let query = `
         SELECT
-            mr.*, 
+            ma.*,
+            mr.*,
             concat(professional.first_name, ' ', professional.second_name, ', ', professional.surname, ' ', professional.second_surname) as 'professionalFullName',
             professional.professional_certificate,
+            professional.identification_type,
+            professional.identification_document,
             files.url as photo
     
         FROM medical_appointments as ma

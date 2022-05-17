@@ -623,9 +623,6 @@
                   "type": "string"
                 }
               },
-              "published_at": {
-                "type": "string"
-              },
               "created_by": {
                 "type": "string"
               },
@@ -634,40 +631,33 @@
               }
             }
           },
-          "users_has_medical_examination_id": {
-            "required": [
-              "id"
-            ],
-            "properties": {
-              "id": {
-                "type": "string"
-              },
-              "patient_id": {
-                "type": "array",
-                "items": {
+          "users_has_examination_ids": {
+            "type": "array",
+            "items": {
+              "required": [
+                "id"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "user_id": {
+                  "type": "string"
+                },
+                "medical_examination_id": {
+                  "type": "string"
+                },
+                "exam_value": {
+                  "type": "number"
+                },
+                "created_by": {
+                  "type": "string"
+                },
+                "updated_by": {
                   "type": "string"
                 }
-              },
-              "medical_examination_ids": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
-              "exam_value": {
-                "type": "number"
-              },
-              "created_by": {
-                "type": "string"
-              },
-              "updated_by": {
-                "type": "string"
               }
             }
-          },
-          "published_at": {
-            "type": "string",
-            "format": "date-time"
           }
         }
       },
@@ -685,12 +675,11 @@
           "exam_categories_id": {
             "type": "string"
           },
-          "users_has_medical_examination_id": {
-            "type": "string"
-          },
-          "published_at": {
-            "type": "string",
-            "format": "date-time"
+          "users_has_examination_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
           },
           "created_by": {
             "type": "string"

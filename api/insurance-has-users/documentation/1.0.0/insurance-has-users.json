@@ -262,7 +262,7 @@
     "/insurance-has-users/count": {
       "get": {
         "deprecated": false,
-        "description": "Retrieve the numver of insurance-has-users documents",
+        "description": "Retrieve the number of insurance-has-users documents",
         "responses": {
           "200": {
             "description": "Retrieve insurance-has-users document(s)",
@@ -769,8 +769,14 @@
               "professional_certificate": {
                 "type": "string"
               },
-              "users_has_medical_examination_id": {
-                "type": "string"
+              "users_has_examination_ids": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "calendar": {
+                "type": "object"
               },
               "created_by": {
                 "type": "string"

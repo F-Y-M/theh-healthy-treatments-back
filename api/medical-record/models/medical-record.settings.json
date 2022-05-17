@@ -14,19 +14,19 @@
   "attributes": {
     "current_illness_patient": {
       "type": "string",
-      "required": true
+      "required": false
     },
     "history_of_current_illness_patient": {
       "type": "string",
-      "required": true
+      "required": false
     },
     "personal_history_patient": {
       "type": "string",
-      "required": true
+      "required": false
     },
     "additional_comments_patient": {
       "type": "string",
-      "required": true
+      "required": false
     },
     "current_illness": {
       "type": "text",
