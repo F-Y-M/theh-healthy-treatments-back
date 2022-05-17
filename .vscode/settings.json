@@ -4,6 +4,7 @@
         "general",
         "medical-appoinment",
         "email",
-        "searchbar"
+        "searchbar",
+        "medical-records"
     ]
 }
