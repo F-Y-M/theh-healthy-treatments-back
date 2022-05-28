@@ -72,6 +72,9 @@
     },
     "specialty": {
       "type": "string"
+    },
+    "laboratory_validation": {
+      "type": "json"
     }
   }
 }

@@ -12,6 +12,7 @@ module.exports = {
         `SELECT 
           shu.id specialties_has_user_id,
           shu.consultation_value,
+          shu.consultation_value_video,
           specialty.id specialty_id,
           specialty.specialty speciality
         FROM specialties_has_users shu

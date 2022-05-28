@@ -32,6 +32,43 @@
         "policies": []
       }
     },
+
+
+    { 
+      "method": "GET",
+      "path": "/search",
+      "handler": "medical-record.search",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/medical-record-short-search-notifications",
+      "handler": "medical-record.medicalRecordShortSearchNotifications",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/medical-record-short-search",
+      "handler": "medical-record.medicalRecordShortSearch",
+      "config": {
+        "policies": []
+      }
+    },
+
+    {
+      "method": "GET",
+      "path": "/medical-record-search",
+      "handler": "medical-record.medicalRecordSearch",
+      "config": {
+        "policies": []
+      }
+    },
+
+
     {
       "method": "GET",
       "path": "/medical-records/count",

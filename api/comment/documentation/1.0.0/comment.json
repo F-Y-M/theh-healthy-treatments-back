@@ -1010,6 +1010,9 @@
               "specialty": {
                 "type": "string"
               },
+              "laboratory_validation": {
+                "type": "object"
+              },
               "created_by": {
                 "type": "string"
               },

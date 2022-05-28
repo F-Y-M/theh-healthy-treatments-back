@@ -23,6 +23,9 @@
     "specialty_id": {
       "via": "specialties_has_users_id",
       "model": "specialty"
+    },
+    "consultation_value_video": {
+      "type": "biginteger"
     }
   }
 }

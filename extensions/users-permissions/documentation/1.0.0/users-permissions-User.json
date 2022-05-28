@@ -1457,6 +1457,9 @@
                 "specialty": {
                   "type": "string"
                 },
+                "laboratory_validation": {
+                  "type": "object"
+                },
                 "created_by": {
                   "type": "string"
                 },
@@ -1524,6 +1527,9 @@
                 },
                 "specialty": {
                   "type": "string"
+                },
+                "laboratory_validation": {
+                  "type": "object"
                 },
                 "created_by": {
                   "type": "string"
@@ -1865,6 +1871,9 @@
                 },
                 "specialty_id": {
                   "type": "string"
+                },
+                "consultation_value_video": {
+                  "type": "integer"
                 },
                 "created_by": {
                   "type": "string"

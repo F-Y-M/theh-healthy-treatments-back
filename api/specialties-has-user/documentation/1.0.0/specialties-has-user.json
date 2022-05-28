@@ -835,6 +835,9 @@
                 "type": "string"
               }
             }
+          },
+          "consultation_value_video": {
+            "type": "integer"
           }
         }
       },
@@ -848,6 +851,9 @@
           },
           "specialty_id": {
             "type": "string"
+          },
+          "consultation_value_video": {
+            "type": "integer"
           },
           "created_by": {
             "type": "string"
