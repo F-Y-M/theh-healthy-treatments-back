@@ -5,7 +5,8 @@
         "medical-appoinment",
         "email",
         "searchbar",
-        "medical-records"
+        "medical-records",
+        "languages"
     ],
     "editor.foldingMaximumRegions": 50000
 }
