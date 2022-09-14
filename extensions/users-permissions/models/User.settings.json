@@ -228,6 +228,9 @@
     },
     "calendar": {
       "type": "json"
+    },
+    "languages_id": {
+      "collection": "languages"
     }
   }
 }

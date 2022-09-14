@@ -731,6 +731,12 @@
               "calendar": {
                 "type": "object"
               },
+              "languages_id": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
               "created_by": {
                 "type": "string"
               },
@@ -940,6 +946,12 @@
               },
               "calendar": {
                 "type": "object"
+              },
+              "languages_id": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
               },
               "created_by": {
                 "type": "string"

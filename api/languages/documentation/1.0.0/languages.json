@@ -1,19 +1,18 @@
 {
   "paths": {
-    "/specialties-has-users": {
+    "/languages": {
       "get": {
         "deprecated": false,
-        "description": "",
+        "description": "Find all the languages's records",
         "responses": {
           "200": {
-            "description": "response",
+            "description": "Retrieve languages document(s)",
             "content": {
               "application/json": {
                 "schema": {
-                  "properties": {
-                    "foo": {
-                      "type": "string"
-                    }
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Languages"
                   }
                 }
               }
@@ -52,7 +51,7 @@
         },
         "summary": "",
         "tags": [
-          "Specialties-has-user"
+          "Languages"
         ],
         "parameters": [
           {
@@ -195,18 +194,14 @@
       },
       "post": {
         "deprecated": false,
-        "description": "Create a new record",
+        "description": "Create a new languages record",
         "responses": {
           "200": {
-            "description": "response",
+            "description": "Retrieve languages document(s)",
             "content": {
               "application/json": {
                 "schema": {
-                  "properties": {
-                    "foo": {
-                      "type": "string"
-                    }
-                  }
+                  "$ref": "#/components/schemas/Languages"
                 }
               }
             }
@@ -244,7 +239,7 @@
         },
         "summary": "",
         "tags": [
-          "Specialties-has-user"
+          "Languages"
         ],
         "requestBody": {
           "description": "",
@@ -252,26 +247,26 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewSpecialties-has-user"
+                "$ref": "#/components/schemas/NewLanguages"
               }
             }
           }
         }
       }
     },
-    "/specialties-has-users/count": {
+    "/languages/count": {
       "get": {
         "deprecated": false,
-        "description": "",
+        "description": "Retrieve the number of languages documents",
         "responses": {
           "200": {
-            "description": "response",
+            "description": "Retrieve languages document(s)",
             "content": {
               "application/json": {
                 "schema": {
                   "properties": {
-                    "foo": {
-                      "type": "string"
+                    "count": {
+                      "type": "integer"
                     }
                   }
                 }
@@ -311,26 +306,22 @@
         },
         "summary": "",
         "tags": [
-          "Specialties-has-user"
+          "Languages"
         ],
         "parameters": []
       }
     },
-    "/specialties-has-users/{id}": {
+    "/languages/{id}": {
       "get": {
         "deprecated": false,
-        "description": "",
+        "description": "Find one languages record",
         "responses": {
           "200": {
-            "description": "response",
+            "description": "Retrieve languages document(s)",
             "content": {
               "application/json": {
                 "schema": {
-                  "properties": {
-                    "foo": {
-                      "type": "string"
-                    }
-                  }
+                  "$ref": "#/components/schemas/Languages"
                 }
               }
             }
@@ -368,7 +359,7 @@
         },
         "summary": "",
         "tags": [
-          "Specialties-has-user"
+          "Languages"
         ],
         "parameters": [
           {
@@ -385,18 +376,14 @@
       },
       "put": {
         "deprecated": false,
-        "description": "Update a record",
+        "description": "Update a single languages record",
         "responses": {
           "200": {
-            "description": "response",
+            "description": "Retrieve languages document(s)",
             "content": {
               "application/json": {
                 "schema": {
-                  "properties": {
-                    "foo": {
-                      "type": "string"
-                    }
-                  }
+                  "$ref": "#/components/schemas/Languages"
                 }
               }
             }
@@ -434,7 +421,7 @@
         },
         "summary": "",
         "tags": [
-          "Specialties-has-user"
+          "Languages"
         ],
         "requestBody": {
           "description": "",
@@ -442,7 +429,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewSpecialties-has-user"
+                "$ref": "#/components/schemas/NewLanguages"
               }
             }
           }
@@ -462,10 +449,10 @@
       },
       "delete": {
         "deprecated": false,
-        "description": "Delete a record",
+        "description": "Delete a single languages record",
         "responses": {
           "200": {
-            "description": "deletes a single record based on the ID supplied",
+            "description": "deletes a single languages based on the ID supplied",
             "content": {
               "application/json": {
                 "schema": {
@@ -508,7 +495,7 @@
         },
         "summary": "",
         "tags": [
-          "Specialties-has-user"
+          "Languages"
         ],
         "parameters": [
           {
@@ -523,343 +510,47 @@
           }
         ]
       }
-    },
-    "/search-specialties": {
-      "get": {
-        "deprecated": false,
-        "description": "",
-        "responses": {
-          "200": {
-            "description": "response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "properties": {
-                    "foo": {
-                      "type": "string"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "default": {
-            "description": "unexpected error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          }
-        },
-        "summary": "",
-        "tags": [
-          "Specialties-has-user"
-        ],
-        "parameters": []
-      }
     }
   },
   "components": {
     "schemas": {
-      "Specialties-has-user": {
+      "Languages": {
         "required": [
-          "id"
+          "id",
+          "name"
         ],
         "properties": {
           "id": {
             "type": "string"
           },
-          "consultation_value": {
-            "type": "number"
+          "name": {
+            "type": "string"
           },
-          "professional_id": {
-            "required": [
-              "id",
-              "username",
-              "email",
-              "first_name",
-              "surname"
-            ],
-            "properties": {
-              "id": {
-                "type": "string"
-              },
-              "username": {
-                "type": "string"
-              },
-              "email": {
-                "type": "string"
-              },
-              "provider": {
-                "type": "string"
-              },
-              "password": {
-                "type": "string"
-              },
-              "resetPasswordToken": {
-                "type": "string"
-              },
-              "confirmationToken": {
-                "type": "string"
-              },
-              "confirmed": {
-                "type": "boolean"
-              },
-              "blocked": {
-                "type": "boolean"
-              },
-              "role": {
-                "type": "string"
-              },
-              "first_name": {
-                "type": "string"
-              },
-              "second_name": {
-                "type": "string"
-              },
-              "surname": {
-                "type": "string"
-              },
-              "second_surname": {
-                "type": "string"
-              },
-              "identification_type": {
-                "type": "string",
-                "enum": [
-                  "CC",
-                  "ID",
-                  "PA",
-                  "DNI"
-                ]
-              },
-              "identification_document": {
-                "type": "string"
-              },
-              "email_verified_at": {
-                "type": "string"
-              },
-              "photo": {
-                "type": "string"
-              },
-              "birthday": {
-                "type": "string"
-              },
-              "phone_number": {
-                "type": "integer"
-              },
-              "cell_phone_number": {
-                "type": "integer"
-              },
-              "sex": {
-                "type": "string",
-                "enum": [
-                  "M",
-                  "F",
-                  "O"
-                ]
-              },
-              "weight": {
-                "type": "integer"
-              },
-              "height": {
-                "type": "number"
-              },
-              "blood_type": {
-                "type": "string",
-                "enum": [
-                  "A",
-                  "B",
-                  "AB",
-                  "O"
-                ]
-              },
-              "rh": {
-                "type": "string",
-                "enum": [
-                  "POSITIVE",
-                  "NEGATIVE"
-                ]
-              },
-              "occupation": {
-                "type": "string"
-              },
-              "status": {
-                "type": "string",
-                "enum": [
-                  "ACTIVE",
-                  "INACTIVE"
-                ]
-              },
-              "medical_appointments_id": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
-              "medical_appointments_professional_id": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
-              "city": {
-                "type": "string"
-              },
-              "availability_hours_id": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
-              "comments_id": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
-              "comments_professional_id": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
-              "insurance_id": {
-                "type": "string"
-              },
-              "insurance_has_user_id": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
-              "address": {
-                "type": "string"
-              },
-              "medical_records_ids": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
-              "consulting_room": {
-                "type": "string"
-              },
-              "illness": {
-                "type": "string"
-              },
-              "insurances_accepted": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
-              "specialties_has_users_id": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
-              "digital_firm": {
-                "type": "string"
-              },
-              "professional_certificate": {
-                "type": "string"
-              },
-              "users_has_examination_ids": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
-              "calendar": {
-                "type": "object"
-              },
-              "languages_id": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
-              "created_by": {
-                "type": "string"
-              },
-              "updated_by": {
-                "type": "string"
-              }
-            }
-          },
-          "specialty_id": {
-            "required": [
-              "id"
-            ],
-            "properties": {
-              "id": {
-                "type": "string"
-              },
-              "specialty": {
-                "type": "string"
-              },
-              "img": {
-                "type": "string"
-              },
-              "specialties_has_users_id": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
-              "published_at": {
-                "type": "string"
-              },
-              "created_by": {
-                "type": "string"
-              },
-              "updated_by": {
-                "type": "string"
-              }
-            }
-          },
-          "consultation_value_video": {
-            "type": "integer"
+          "status": {
+            "type": "string",
+            "default": "INACTIVE",
+            "enum": [
+              "ACTIVE",
+              "INACTIVE"
+            ]
           }
         }
       },
-      "NewSpecialties-has-user": {
+      "NewLanguages": {
+        "required": [
+          "name"
+        ],
         "properties": {
-          "consultation_value": {
-            "type": "number"
-          },
-          "professional_id": {
+          "name": {
             "type": "string"
           },
-          "specialty_id": {
-            "type": "string"
-          },
-          "consultation_value_video": {
-            "type": "integer"
+          "status": {
+            "type": "string",
+            "default": "INACTIVE",
+            "enum": [
+              "ACTIVE",
+              "INACTIVE"
+            ]
           },
           "created_by": {
             "type": "string"
@@ -871,5 +562,9 @@
       }
     }
   },
-  "tags": []
+  "tags": [
+    {
+      "name": "Languages"
+    }
+  ]
 }
