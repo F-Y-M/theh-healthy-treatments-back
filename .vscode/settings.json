@@ -6,7 +6,8 @@
         "email",
         "searchbar",
         "medical-records",
-        "languages"
+        "languages",
+        "mysql"
     ],
     "editor.foldingMaximumRegions": 50000
 }
