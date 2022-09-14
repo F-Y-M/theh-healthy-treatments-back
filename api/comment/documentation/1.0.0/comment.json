@@ -1013,6 +1013,9 @@
               "laboratory_validation": {
                 "type": "object"
               },
+              "confirmed": {
+                "type": "boolean"
+              },
               "created_by": {
                 "type": "string"
               },

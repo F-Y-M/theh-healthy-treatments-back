@@ -19,7 +19,8 @@
         "Doctor_Office",
         "Payu",
         "Slope"
-      ]
+      ],
+      "default": "Slope"
     },
     "value": {
       "type": "decimal"
@@ -37,7 +38,8 @@
       "enum": [
         "Slope",
         "Payment"
-      ]
+      ],
+      "default": "Slope"
     }
   }
 }

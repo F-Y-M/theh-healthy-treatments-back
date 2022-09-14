@@ -1395,6 +1395,10 @@
           },
           "laboratory_validation": {
             "type": "object"
+          },
+          "confirmed": {
+            "type": "boolean",
+            "default": false
           }
         }
       },
@@ -1457,6 +1461,10 @@
           },
           "laboratory_validation": {
             "type": "object"
+          },
+          "confirmed": {
+            "type": "boolean",
+            "default": false
           },
           "created_by": {
             "type": "string"

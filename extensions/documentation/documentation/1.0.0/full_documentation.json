@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "05/27/2022 7:37:28 PM"
+    "x-generation-date": "09/14/2022 8:25:12 AM"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -11179,6 +11179,9 @@
               "laboratory_validation": {
                 "type": "object"
               },
+              "confirmed": {
+                "type": "boolean"
+              },
               "created_by": {
                 "type": "string"
               },
@@ -12681,6 +12684,10 @@
           },
           "laboratory_validation": {
             "type": "object"
+          },
+          "confirmed": {
+            "type": "boolean",
+            "default": false
           }
         }
       },
@@ -12743,6 +12750,10 @@
           },
           "laboratory_validation": {
             "type": "object"
+          },
+          "confirmed": {
+            "type": "boolean",
+            "default": false
           },
           "created_by": {
             "type": "string"
@@ -12824,6 +12835,9 @@
                 },
                 "laboratory_validation": {
                   "type": "object"
+                },
+                "confirmed": {
+                  "type": "boolean"
                 },
                 "created_by": {
                   "type": "string"
@@ -13191,6 +13205,7 @@
           },
           "type": {
             "type": "string",
+            "default": "Slope",
             "enum": [
               "Cash",
               "Doctor_Office",
@@ -13264,6 +13279,9 @@
               "laboratory_validation": {
                 "type": "object"
               },
+              "confirmed": {
+                "type": "boolean"
+              },
               "created_by": {
                 "type": "string"
               },
@@ -13274,6 +13292,7 @@
           },
           "status": {
             "type": "string",
+            "default": "Slope",
             "enum": [
               "Slope",
               "Payment"
@@ -13292,6 +13311,7 @@
         "properties": {
           "type": {
             "type": "string",
+            "default": "Slope",
             "enum": [
               "Cash",
               "Doctor_Office",
@@ -13310,6 +13330,7 @@
           },
           "status": {
             "type": "string",
+            "default": "Slope",
             "enum": [
               "Slope",
               "Payment"
@@ -14606,6 +14627,9 @@
                 "laboratory_validation": {
                   "type": "object"
                 },
+                "confirmed": {
+                  "type": "boolean"
+                },
                 "created_by": {
                   "type": "string"
                 },
@@ -14676,6 +14700,9 @@
                 },
                 "laboratory_validation": {
                   "type": "object"
+                },
+                "confirmed": {
+                  "type": "boolean"
                 },
                 "created_by": {
                   "type": "string"

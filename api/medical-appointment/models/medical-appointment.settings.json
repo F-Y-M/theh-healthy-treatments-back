@@ -75,6 +75,10 @@
     },
     "laboratory_validation": {
       "type": "json"
+    },
+    "confirmed": {
+      "type": "boolean",
+      "default": false
     }
   }
 }

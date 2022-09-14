@@ -71,7 +71,6 @@ module.exports = {
 
     searchRecordForProfessional: async (ctx) => {
         let body = ctx.request.body;
-        console.log("esto es body: ", body);
         let professionalId = body.professional_id;
 
         let query = `
@@ -105,12 +104,12 @@ module.exports = {
         specialtieId,
         specialtieName,
         specialtieType, // specialty || medicalExaminations
-        city,
+        // city,
         date,
         insurance 
       } = ctx.request.query
 
-      console.log(specialtieId, specialtieName, specialtieType, city, date, insurance)
+      console.log(specialtieId, specialtieName, specialtieType, date, insurance)
 
       let query = ''
 
@@ -158,10 +157,9 @@ module.exports = {
           WHERE
             users.calendar IS NOT NULL AND
             users.calendar LIKE '%${date}%' AND
-            users.city LIKE '%${city}%' AND
             specialties.id = ${specialtieId}
             #insurance#
-          GROUP BY users.id`
+          GROUP BY users.first_name`
 
           if (insurance) {
             query.replace('#insurance#', `AND insurances.name LIKE '%${insurance}%'`)
@@ -214,10 +212,9 @@ module.exports = {
           WHERE
             users.calendar IS NOT NULL AND
             users.calendar LIKE '%${date}%' AND
-            users.city LIKE '%${city}%' AND
             medical_examinations.id = ${specialtieId}
             #insurance#
-          GROUP BY users.id`
+          GROUP BY users.first_name`
 
         if (insurance) {
           query.replace('#insurance#', `AND insurances.name LIKE '%${insurance}%'`)
