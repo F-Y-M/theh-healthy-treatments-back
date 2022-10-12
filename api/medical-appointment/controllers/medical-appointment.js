@@ -63,7 +63,7 @@ module.exports = {
     console.log('CODE: ', code)
     try {
       const queryMedicalAppointment = await strapi.connections.default.raw(
-        `SELECT * FROM medical_appointments WHERE code = '${code}' AND confirmed = false`
+        `SELECT * FROM medical_appointments WHERE code = '${code}' AND confirmed IS NULL`
       )
 
       console.log('result: ', queryMedicalAppointment[0][0])
@@ -71,7 +71,7 @@ module.exports = {
       if(queryMedicalAppointment[0].length > 0){
         await strapi.connections.default.raw(
           'UPDATE medical_appointments SET confirmed=1 ' +
-          `WHERE code = '${code}' AND confirmed = false`)
+          `WHERE code = '${code}' AND confirmed IS NULL`)
           console.log("se confirmo la cita medica")
 
         response =  {

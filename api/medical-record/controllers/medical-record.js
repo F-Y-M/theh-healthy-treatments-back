@@ -159,7 +159,18 @@ module.exports = {
             users.calendar LIKE '%${date}%' AND
             specialties.id = ${specialtieId}
             #insurance#
-          GROUP BY users.first_name`
+          GROUP BY 
+            professionalFullName, 
+            users.id,
+            users.first_name,
+            users.surname,
+            users.calendar,
+            acceptInsurance,
+            photo,
+            rate,
+            specialties.specialty
+            #insurance
+          `
 
           if (insurance) {
             query.replace('#insurance#', `AND insurances.name LIKE '%${insurance}%'`)
@@ -214,18 +225,28 @@ module.exports = {
             users.calendar LIKE '%${date}%' AND
             medical_examinations.id = ${specialtieId}
             #insurance#
-          GROUP BY users.first_name`
+          GROUP BY 
+            professionalFullName, 
+            users.id,
+            users.first_name,
+            users.surname,
+            users.calendar,
+            acceptInsurance,
+            photo,
+            rate,
+            specialties.specialty
+            #insurance
+          `
 
         if (insurance) {
           query.replace('#insurance#', `AND insurances.name LIKE '%${insurance}%'`)
         } else {
           query.replace('#insurance#', '')
         }
-        console.log(query)
       }
-
+      
       const result = await strapi.connections.default.raw(query);
-
+      
       let res = [];
 
       result[0].map((row) => {
@@ -266,13 +287,16 @@ module.exports = {
             })
         })
 
+        delete row.calendar
+        delete row.acceptInsurance	
+        delete row.insurance
+
         row.schedules = availabilityHour
         res.push(row)
 
       })
 
       return res
-
         // Código de quiñones
         // let { 
         //       name,
