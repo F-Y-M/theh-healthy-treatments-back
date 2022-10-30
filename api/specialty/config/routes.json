@@ -26,6 +26,14 @@
     },
     {
       "method": "POST",
+      "path": "/get-specialties",
+      "handler": "specialty.getSpecialty",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
       "path": "/specialties",
       "handler": "specialty.create",
       "config": {

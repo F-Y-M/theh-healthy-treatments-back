@@ -117,6 +117,7 @@ module.exports = {
     } = ctx.request.query
 
     let query = ''
+    let query2 = ''
 
     if (specialtieType == 'specialty') {
       query = `
@@ -144,7 +145,7 @@ module.exports = {
             upload_file ON 
             upload_file.id = upload_file_morph.upload_file_id
           LEFT JOIN 
-            comments ON 
+            comments ON  
             comments.professional_id = users.id
           LEFT JOIN 
             specialties_has_users ON 
@@ -159,12 +160,11 @@ module.exports = {
             insurances ON
             insurances.id = insurance_has_users.insurance_id
           WHERE
-            users.calendar IS NOT NULL AND
-            users.calendar LIKE '%${date}%' AND
-            specialties.id = ${specialtieId}
-            #city#
-            #insurance#
-          GROUP BY 
+            (users.calendar IS NULL OR
+            users.calendar LIKE '%${date}%') AND
+            specialties.id = ${specialtieId}`
+            
+          query2 = `\nGROUP BY 
             professionalFullName, 
             users.id,
             users.first_name,
@@ -174,27 +174,23 @@ module.exports = {
             photo,
             rate,
             specialties.specialty
-            #insurance
-            #city
           `
 
-      if (city) {
-        query.replace('#city#', `AND users.city LIKE '%${city}%'`)
-        query.replace('#city', ', users.city')
-      } else {
-        query.replace('#city#', '')
-        query.replace('#city', '')
+      if (city != undefined && 
+        city != '' && 
+        city != ' ') {
+        query += ` AND users.city LIKE '%${city}%'`
+        query2 += ', users.city'
+
       }
 
-      if (insurance) {
-        query.replace(
-          '#insurance#',
-          `AND insurances.name LIKE '%${insurance}%'`
-          )
-        query.replace('#insurance', 'insurances.name')
-      } else {
-        query.replace('#insurance#', '')
-        query.replace('#insurance', '')
+      if (insurance != undefined && 
+        insurance != '' && 
+        insurance != ' ') {
+        console.log("insurance: ", insurance)
+        query += ` AND insurances.name LIKE '%${insurance}%'`
+        query2 += ', insurances.name'
+      
       }
 
     } else if (specialtieType == 'medicalExaminations') {
@@ -239,12 +235,11 @@ module.exports = {
             insurances ON
             insurances.id = insurance_has_users.insurance_id
           WHERE
-            users.calendar IS NOT NULL AND
-            users.calendar LIKE '%${date}%' AND
-            medical_examinations.id = ${specialtieId}
-            #city#
-            #insurance#
-          GROUP BY 
+            (users.calendar IS NULL OR
+            users.calendar LIKE '%${date}%') AND
+            medical_examinations.id = ${specialtieId}`
+
+          query2 = `\nGROUP BY 
             professionalFullName, 
             users.id,
             users.first_name,
@@ -254,155 +249,90 @@ module.exports = {
             photo,
             rate,
             specialties.specialty
-            #city
-            #insurance
           `
 
-      if (city) {
-        query.replace('#city#', `AND users.city LIKE '%${city}%'`)
-        query.replace('#city', ', users.city')
-      } else {
-        query.replace('#city#', '')
-        query.replace('#city', '')
+      if (city != undefined && 
+        city != '' && 
+        city != ' ') {
+        query += ` AND users.city LIKE '%${city}%'`
+        query2 += ', users.city'
+      
       }
 
-      if (insurance) {
-        query.replace(
-          '#insurance#',
-          `AND insurances.name LIKE '%${insurance}%'`
-          )
-        query.replace('#insurance', 'insurances.name')
-      } else {
-        query.replace('#insurance#', '')
-        query.replace('#insurance', '')
+      if (insurance != undefined && 
+        insurance != '' && 
+        insurance != ' ') {
+        query += ` AND insurances.name LIKE '%${insurance}%'`
+        query2 += ', insurances.name'
       }
 
-    } else {
-      query = `
-        SELECT 
-            concat('Dr ',users.first_name, ', ', users.surname) AS professionalFullName,
-            users.id,
-            users.first_name,
-            users.surname,
-            users.calendar,
-            users.accept_insurance AS acceptInsurance,
-            upload_file.url AS photo,
-            AVG(comments.rate) AS rate,
-            insurances.name AS insurance
-          FROM 
-            \`users-permissions_user\` AS users
-          LEFT JOIN 
-            upload_file_morph ON 
-            upload_file_morph.related_type = 'users-permissions_user' AND
-            upload_file_morph.field = 'photo' AND
-            upload_file_morph.related_id = users.id AND
-            users.role = 1
-          LEFT JOIN 
-            upload_file ON 
-            upload_file.id = upload_file_morph.upload_file_id
-          LEFT JOIN 
-            comments ON 
-            comments.professional_id = users.id
-          LEFT JOIN
-            insurance_has_users ON
-            insurance_has_users.user_id = users.id
-          LEFT JOIN
-            insurances ON
-            insurances.id = insurance_has_users.insurance_id
-          WHERE
-            (users.calendar LIKE '%${date}%' OR users.calendar IS NULL) AND
-            users.first_name = '${name}'
-            #city#
-            #insurance#
-          GROUP BY 
-            professionalFullName, 
-            users.id,
-            users.first_name,
-            users.surname,
-            acceptInsurance,
-            photo,
-            rate
-            #city
-            #insurance
-        `
-        if (city) {
-          query.replace('#city#', `AND users.city LIKE '%${city}%'`)
-          query.replace('#city', ', users.city')
-        } else {
-          query.replace('#city#', '')
-          query.replace('#city', '')
-        }
-  
-        if (insurance) {
-          query.replace(
-            '#insurance#',
-            `AND insurances.name LIKE '%${insurance}%'`
-            )
-          query.replace('#insurance', 'insurances.name')
-        } else {
-          query.replace('#insurance#', '')
-          query.replace('#insurance', '')
-        }
     }
 
+    console.log("query: ", query+query2)
 
-    const result = await strapi.connections.default.raw(query)
+    const result = await strapi.connections.default.raw(query+query2)
 
     let res = []
 
-    if (name == undefined) {
+    
       result[0].map((row) => {
-        let jsonCalendaDate = JSON.parse(row.calendar)
 
-        let listOfDates = []
+        if(row.calendar){
 
-        // Agregamos primero las fechas
-        let availabilityHour = jsonCalendaDate.map((calendaDate,index) => {
-          
-          if(new Date(calendaDate.start.slice(0,10)) >= new Date()){
-            if (!listOfDates.includes(calendaDate.start.slice(0, 10))) {
-              listOfDates.push(calendaDate.start.slice(0, 10))
-              return {
-                date: calendaDate.start.slice(0, 10),
-                shedule: [],
+          let jsonCalendaDate = JSON.parse(row.calendar)
+  
+          let listOfDates = []
+  
+          // Agregamos primero las fechas
+          let availabilityHour = jsonCalendaDate.map((calendaDate,index) => {
+            
+            if(new Date(calendaDate.start.slice(0,10)) >= new Date()){
+              if (!listOfDates.includes(calendaDate.start.slice(0, 10))) {
+                listOfDates.push(calendaDate.start.slice(0, 10))
+                return {
+                  date: calendaDate.start.slice(0, 10),
+                  shedule: [],
+                }
               }
+            }  
+  
+            else {
+              delete jsonCalendaDate[index]
             }
-          }  
-
-          else {
-            delete jsonCalendaDate[index]
-          }
-          
-        })
-
-        // Eliminamos idefinidos
-        availabilityHour = availabilityHour.filter((item) => {
-          return item != undefined
-        })
-
-        // Agregamos horas a cada fecha
-        availabilityHour.forEach(function (element) {
-          jsonCalendaDate.map((calendaDate) => {
-            if (element.date == calendaDate.start.slice(0, 10)) {
-              element.shedule.push({
-                from: calendaDate.start.slice(11, 16),
-                to: calendaDate.end.slice(11, 16),
-              })
-            }
+            
           })
-        })
-
+  
+          // Eliminamos idefinidos
+          availabilityHour = availabilityHour.filter((item) => {
+            return item != undefined
+          })
+  
+          // Agregamos horas a cada fecha
+          availabilityHour.forEach(function (element) {
+            jsonCalendaDate.map((calendaDate) => {
+              if (element.date == calendaDate.start.slice(0, 10)) {
+                element.shedule.push({
+                  from: calendaDate.start.slice(11, 16),
+                  to: calendaDate.end.slice(11, 16),
+                })
+              }
+            })
+          })
+  
+          
+          row.schedules = availabilityHour
+        }
+        
         delete row.calendar
         delete row.acceptInsurance
         delete row.insurance
 
-        row.schedules = availabilityHour
+
         res.push(row)
       })
-    }
 
 
-    return name == undefined ? res : result[0]
+    return res
     // Código de quiñones
     // let {
     //       name,
