@@ -8,7 +8,6 @@
 module.exports = {
   searchRecordAndUser: async (ctx) => {
     let body = ctx.request.body
-    console.log('esto es body: ', body)
     let appointmentId = body.appointment_id
     let medicalRecordId = body.medical_record_id
 
@@ -43,7 +42,6 @@ module.exports = {
 
   searchRecordAndProfessional: async (ctx) => {
     let body = ctx.request.body
-    console.log('esto es body: ', body)
     let medicalRecordId = body.medical_record_id
 
     let query =
@@ -187,7 +185,6 @@ module.exports = {
       if (insurance != undefined && 
         insurance != '' && 
         insurance != ' ') {
-        console.log("insurance: ", insurance)
         query += ` AND insurances.name LIKE '%${insurance}%'`
         query2 += ', insurances.name'
       
@@ -248,7 +245,7 @@ module.exports = {
             acceptInsurance,
             photo,
             rate,
-            specialties.specialty
+            medical_examinations.name
           `
 
       if (city != undefined && 
@@ -267,8 +264,78 @@ module.exports = {
       }
 
     }
+    else {
+      let splitted = specialtieName.split(' ')
 
-    console.log("query: ", query+query2)
+      query = `
+        SELECT 
+            concat('Dr ',users.first_name, ', ', users.surname) AS professionalFullName,
+            users.id,
+            users.first_name,
+            users.surname,
+            users.calendar,
+            users.accept_insurance AS acceptInsurance,
+            upload_file.url AS photo,
+            AVG(comments.rate) AS rate,
+            insurances.name AS insurance
+          FROM 
+            \`users-permissions_user\` AS users
+          LEFT JOIN 
+            upload_file_morph ON 
+            upload_file_morph.related_type = 'users-permissions_user' AND
+            upload_file_morph.field = 'photo' AND
+            upload_file_morph.related_id = users.id AND
+            users.role = 1
+          LEFT JOIN 
+            upload_file ON 
+            upload_file.id = upload_file_morph.upload_file_id
+          LEFT JOIN 
+            comments ON 
+            comments.professional_id = users.id
+          LEFT JOIN
+            insurance_has_users ON
+            insurance_has_users.user_id = users.id
+          LEFT JOIN
+            insurances ON
+            insurances.id = insurance_has_users.insurance_id
+          WHERE
+            (users.calendar LIKE '%${date}%' OR users.calendar IS NULL) AND
+            users.first_name = '${splitted[0]}'
+          `
+
+          if(splitted[1] && splitted[1] != '') {
+            query += ` AND users.surname = '${splitted[1]}'`
+          }
+
+          if(splitted[2] && splitted[2] != ''){
+            query += ` AND users.surname = '${splitted[2]}'`
+          }
+          
+         query2 = `
+          GROUP BY 
+            professionalFullName, 
+            users.id,
+            users.first_name,
+            users.surname,
+            acceptInsurance,
+            photo,
+            rate
+        `
+        if (city != undefined && 
+          city != '' && 
+          city != ' ') {
+          query += ` AND users.city LIKE '%${city}%'`
+          query2 += ', users.city'
+        
+        }
+  
+        if (insurance != undefined && 
+          insurance != '' && 
+          insurance != ' ') {
+          query += ` AND insurances.name LIKE '%${insurance}%'`
+          query2 += ', insurances.name'
+        }
+    }
 
     const result = await strapi.connections.default.raw(query+query2)
 
@@ -330,7 +397,6 @@ module.exports = {
 
         res.push(row)
       })
-
 
     return res
     // Código de quiñones
@@ -452,7 +518,6 @@ module.exports = {
           LEFT join specialties spec on spec.id = specUser.specialty_id\n` +
       queryPart
 
-    console.log(query)
 
     const result = await strapi.connections.default.raw(query)
     return result[0]
@@ -481,7 +546,6 @@ module.exports = {
           LEFT join specialties spec on spec.id = specUser.specialty_id\n` +
       queryPart
 
-    console.log(query)
 
     const result = await strapi.connections.default.raw(query)
     return result[0]
