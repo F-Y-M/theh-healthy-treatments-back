@@ -8,6 +8,8 @@
 module.exports = {
     getSpecialty: async(ctx) => {
 
+        let {add} = ctx.request.body
+
         let specialty = await strapi.connections.default.raw(`
             SELECT specialty
             FROM specialties
@@ -20,24 +22,6 @@ module.exports = {
             FROM medical_examinations
         `)
 
-        // let doctor = await strapi.connections.default.raw(`
-        // SELECT 
-        //     CONCAT('Dr.', first_name, ' ', 
-        //         CASE 
-        //             WHEN second_name IS NULL THEN ''
-        //             ELSE second_name
-        //         END
-        //         , ' ', surname, ' ', 
-        //         CASE 
-        //             WHEN second_surname IS NULL THEN ''
-        //             ELSE second_surname
-        //         END 
-        //     ) as specialty
-        // FROM \`users-permissions_user\`
-        // WHERE 	
-        //     role = 1
-        // `)
-
         let doctor = await strapi.connections.default.raw(`
         SELECT 
             CONCAT(first_name, ' ', surname 
@@ -45,6 +29,9 @@ module.exports = {
             upload_file.url AS photo,
             specialties.specialty AS 'group'
         FROM \`users-permissions_user\` users
+        LEFT JOIN 
+            specialties_has_users ON 
+            specialties_has_users.professional_id = users.id
         LEFT JOIN 
             upload_file_morph ON 
             upload_file_morph.related_type = 'users-permissions_user' AND
@@ -54,13 +41,10 @@ module.exports = {
             upload_file ON 
             upload_file.id = upload_file_morph.upload_file_id
         LEFT JOIN 
-            specialties_has_users ON 
-            specialties_has_users.professional_id = users.id
-        LEFT JOIN 
             specialties ON 
             specialties.id = specialties_has_users.specialty_id
         WHERE 	
-            role = 1
+            role = 1 ${add ? 'AND specialties.id = 31;' : ';'}
         `)
 
 
