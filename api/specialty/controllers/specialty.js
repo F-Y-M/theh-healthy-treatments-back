@@ -9,18 +9,26 @@ module.exports = {
     getSpecialty: async(ctx) => {
 
         let {add} = ctx.request.body
+        let specialty
+        let medicalExam
 
-        let specialty = await strapi.connections.default.raw(`
-            SELECT specialty
-            FROM specialties
-        `)
-
-        // console.log("REsultado: ", specialty)
-
-        let medicalExam = await strapi.connections.default.raw(`
-            SELECT name as specialty
-            FROM medical_examinations
-        `)
+        if(add != 'dentist'){
+            specialty = await strapi.connections.default.raw(`
+                SELECT specialty
+                FROM specialties
+            `)
+    
+            // console.log("REsultado: ", specialty)
+    
+             medicalExam = await strapi.connections.default.raw(`
+                SELECT name as specialty
+                FROM medical_examinations
+            `)
+        }
+        else {
+            specialty = [[]]
+            medicalExam = [[]]
+        }
 
         let doctor = await strapi.connections.default.raw(`
         SELECT 
