@@ -65,7 +65,7 @@ module.exports = {
         let to = 'thehealthytreatments@gmail.com'
 
         const emailOptions = {
-            to: to,
+            to: email,
             subject: subject,
             html: emailTemplate(
                 title,
