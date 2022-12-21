@@ -8,7 +8,8 @@
         "medical-records",
         "languages",
         "mysql",
-        "search"
+        "search",
+        "Dental"
     ],
     "editor.foldingMaximumRegions": 50000
 }
