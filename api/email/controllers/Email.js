@@ -65,7 +65,7 @@ module.exports = {
         let to = 'thehealthytreatments@gmail.com'
 
         const emailOptions = {
-            to: email,
+            to: to,
             subject: subject,
             html: emailTemplate(
                 title,
@@ -74,8 +74,19 @@ module.exports = {
             )
         }
 
+        let otherOptions = {
+            to: email,
+            subject: 'COTIZACIÓN',
+            html: emailTemplate(
+                'EMAIL RECIBIDO',
+                'Hemos recibido tu petición y nos pondremos en contacto contigo lo mas pronto posible.',
+                ''
+            )
+        }
+
         try {
             await strapi.plugins['email'].services.email.send(emailOptions)
+            await strapi.plugins['email'].services.email.send(otherOptions)
             strapi.log.debug(`Email sent to ${to}`)
             ctx.send({ message: 'Email sent' })
         } catch (error) {
