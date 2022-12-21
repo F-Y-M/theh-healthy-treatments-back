@@ -11,6 +11,12 @@
         "path": "/send-text",
         "handler": "Email.send",
         "config": {}
+      },
+      {
+        "method": "POST",
+        "path": "/send-quote",
+        "handler": "Email.sendQuote",
+        "config": {}
       }
     ]
   }
