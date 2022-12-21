@@ -76,7 +76,7 @@ module.exports = {
 
         try {
             await strapi.plugins['email'].services.email.send(emailOptions)
-            strapi.log.debug(`Email sent to ${sendTo}`)
+            strapi.log.debug(`Email sent to ${to}`)
             ctx.send({ message: 'Email sent' })
         } catch (error) {
             console.log("Error: ", error)
